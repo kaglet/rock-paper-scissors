@@ -6,6 +6,9 @@ function getRandomInt(min, max) {
 }
 
 function playRound(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toLowerCase();
+    computerSelection = computerSelection.toLowerCase();
+
     // if player and computer play the same then output draw
     if (playerSelection === computerSelection) {
         return `Draw! Both played ${playerSelection}`;
@@ -31,9 +34,7 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     const playButtons = document.querySelectorAll('button.play-option');
 
-    playButtons.forEach(button => button.addEventListener('click', playRound));
-
-    // Get computer's random choice from a pool of 3
+     // Get computer's random choice from a pool of 3
     let getComputerChoice = function () {
         let numInRange = getRandomInt(1, 4);
 
@@ -41,26 +42,34 @@ function game() {
             case 1: return "rock";
             case 2: return "scissors";
             case 3: return "paper";
-            // default: return "Error!";
         }
     };
 
-    let computerSelection = getComputerChoice();
-    // Play a round
-    playRound(playerSelection, computerSelection);
+    let computerSelection = getComputerChoice();  
 
-    if (playerWinCount === computerWinCount) {
-        console.log("Draw! You have been matched.");
-    }
-    else if (playerWinCount > computerWinCount) {
-        console.log("Congrats! You're better than a bot.")
-    }
-    else {
-        console.log("You lose. Not a good look man.")
-    }
+    //onClick play a round with parameters of playerSelection and computerSelection
+    playButtons.forEach(button => button.addEventListener('click', (e) => {
+        let playerSelection = e.target.value;
+        return console.log(playRound(playerSelection, computerSelection)) } )
+    );
 }
 
-// Code starts below...
+do {
+    game();
+    console.log(playerWinCount);
+    console.log(computerWinCount);
+    playerWinCount++;
+} while (playerWinCount < 5 && computerWinCount < 5);
+
+if (playerWinCount === computerWinCount) {
+    console.log("Draw! Your skill has been matched.");
+}
+else if (playerWinCount > computerWinCount) {
+    console.log("Congrats! You're better than a bot.")
+}
+else {
+    console.log("You lose. Not a good look.")
+}
 
 
 
