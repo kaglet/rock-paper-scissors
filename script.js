@@ -31,11 +31,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-
-const playButtons = document.querySelectorAll('button.play-option');
-
-// Get computer's random choice from a pool of 3
-let getComputerChoice = function () {
+function getComputerChoice() {
     let numInRange = getRandomInt(1, 4);
 
     switch (numInRange) {
@@ -44,6 +40,9 @@ let getComputerChoice = function () {
         case 3: return "paper";
     }
 };
+
+const playButtons = document.querySelectorAll('button.play-option');
+
 
 //onClick play a round with parameters of playerSelection and computerSelection
 playButtons.forEach(button => {
