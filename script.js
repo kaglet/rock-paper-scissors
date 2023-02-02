@@ -51,15 +51,28 @@ function beginGame(e) {
     body.appendChild(roundResultsDiv);
 
     if (playerWinCount === 5 || computerWinCount === 5) {
+        const gameResultsDiv = document.createElement('div');
+        const body = document.querySelector('body');
+
         if (playerWinCount === computerWinCount) {
-            console.log("Draw! Your skill has been matched.");
+            gameResultsDiv.textContent = "Draw! Your skill has been matched.";
         }
         else if (playerWinCount > computerWinCount) {
-            console.log("Congrats! You're better than a bot.")
+            gameResultsDiv.textContent = "Congrats! You're better than a bot.";
         }
         else {
-            console.log("You lose. Not a good look.")
+            gameResultsDiv.textContent = "You lose. Not a good look.";
         }
+
+        // Reset win counts
+        playerWinCount = 0;
+        computerWinCount = 0;
+
+        body.appendChild(gameResultsDiv);
+        // Optionally add classes or attributes to change how it is styled dynamically.
+
+        // Add try again button to maybe refresh the page or clear all the divs and reenable event listeners or just toggle a playable class.
+        // Or just disable buttons.
     }
 }
 
