@@ -83,13 +83,6 @@ playButtons.forEach(button => {
     button.addEventListener('click', beginGame);
 });
 
-// you're running the game function even before the user has done anything
-// but all I'm doing is adding event listeners, yes but I'm doing that in a loop with no action from a user
-// the count is never actually incremented unless the button is clicked
-// putting game() in a loop is the fatal flaw, as it repeatedly adds event listeners to buttons but nothing ever actually changes or terminates the loop
-// do not add event listeners in a while loop, just leave it to a regular counter to pick up on it. Don't click buttons in a loop. 
-// rather disable the event listeners 
-
 
 
 /* There is no on form load function so I'm not sure when these functions kick in or how long they are active.
