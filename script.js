@@ -41,18 +41,17 @@ function getComputerChoice() {
     }
 };
 
-const playButtons = document.querySelectorAll('button.play-option');
+function beginGame(e) {
+    let playerSelection = e.target.value;
+    let computerSelection = getComputerChoice();
+    return console.log(playRound(playerSelection, computerSelection));
+}
 
+const playButtons = document.querySelectorAll('button.play-option');
 
 //onClick play a round with parameters of playerSelection and computerSelection
 playButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-        playerWinCount++;
-        let playerSelection = e.target.value;
-        let computerSelection = getComputerChoice();
-        return console.log(playRound(playerSelection, computerSelection));
-        console.log(e.target);
-    });
+    button.addEventListener('click', beginGame);
 });
 
 // you're running the game function even before the user has done anything
@@ -62,7 +61,7 @@ playButtons.forEach(button => {
 // do not add event listeners in a while loop, just leave it to a regular counter to pick up on it. Don't click buttons in a loop. 
 // rather disable the event listeners 
 
-if (playerWinCount === computerWinCount) {
+/*if (playerWinCount === computerWinCount) {
     console.log("Draw! Your skill has been matched.");
 }
 else if (playerWinCount > computerWinCount) {
@@ -70,7 +69,7 @@ else if (playerWinCount > computerWinCount) {
 }
 else {
     console.log("You lose. Not a good look.")
-}
+}*/
 
 
 
