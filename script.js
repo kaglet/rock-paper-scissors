@@ -32,31 +32,29 @@ function playRound(playerSelection, computerSelection) {
 }
 
 
-    const playButtons = document.querySelectorAll('button.play-option');
+const playButtons = document.querySelectorAll('button.play-option');
 
-     // Get computer's random choice from a pool of 3
-    let getComputerChoice = function () {
-        let numInRange = getRandomInt(1, 4);
+// Get computer's random choice from a pool of 3
+let getComputerChoice = function () {
+    let numInRange = getRandomInt(1, 4);
 
-        switch (numInRange) {
-            case 1: return "rock";
-            case 2: return "scissors";
-            case 3: return "paper";
-        }
-    };
+    switch (numInRange) {
+        case 1: return "rock";
+        case 2: return "scissors";
+        case 3: return "paper";
+    }
+};
 
-    playerWinCount++;
-    let computerSelection = getComputerChoice();  
-
-    //onClick play a round with parameters of playerSelection and computerSelection
-    playButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
+//onClick play a round with parameters of playerSelection and computerSelection
+playButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
         playerWinCount++;
         let playerSelection = e.target.value;
-        return console.log(playRound(playerSelection, computerSelection)); 
+        let computerSelection = getComputerChoice();
+        return console.log(playRound(playerSelection, computerSelection));
         console.log(e.target);
-        });
     });
+});
 
 // you're running the game function even before the user has done anything
 // but all I'm doing is adding event listeners, yes but I'm doing that in a loop with no action from a user
