@@ -31,7 +31,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
+
     const playButtons = document.querySelectorAll('button.play-option');
 
      // Get computer's random choice from a pool of 3
@@ -57,8 +57,6 @@ function game() {
         console.log(e.target);
         });
     });
-
-}
 
 // you're running the game function even before the user has done anything
 // but all I'm doing is adding event listeners, yes but I'm doing that in a loop with no action from a user
