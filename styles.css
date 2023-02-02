@@ -1,8 +1,88 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.main-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 40px 150px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.mini-container > div {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
 button {
-    display: block;
     margin: 20px;
-    width: 70px;
-    height: 30px;
+    width: 120px;
+    height: 120px;
+}
+
+h1 {
+    font-size: 70px;
+    margin: 60px auto 0 auto;
+}
+
+p {
+    font-size: 26px;  
+    margin: 40px auto;
+    font-style: italic;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+}
+
+.round-result, .game-result {
+    width: 500px;
+    height: 100px;
+    outline: 2px solid pink;
+    margin: auto;
 }
 
 /* Black, peach, plum red, white, metal grey is my color palette. */
+
+/* Notes to self: 
+
+Don't panic to feel like you need to recall or know everything. 
+Reference only what is of utility to now. Dig through past sources from TOP and my notes 
+first before wasting time searching for new sources. Because then I am not
+spreading myself too thin, I am giving myself enough depth of resources
+keeping things more concise and localized. 
+
+There are so many options and use cases that its impossible memorize them all
+or to know all the various combinations. You need to explore them 
+on the fly. Only know the basic building blocks. 
+You will build the combinations using the building blocks.
+
+Just know the concept of generally what layout algorithm 
+can get what done in terms of layout.
+
+It's enough to know: the option exists, and whereabout to find it.
+
+Also balance, think which code leads to more to manage
+or less to manage (more maintainable code).
+
+It's ok to look for inspiration, criticize it, 
+how you would like your workflow.
+
+Work outside to in, in terms of flow and layout.
+Work inner to outer in terms of size as usually parent auto-fits to content.
+It's also a good idea to set base sizes before using other flexbox properties.*/
