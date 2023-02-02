@@ -23,7 +23,7 @@ function playRound(playerSelection, computerSelection) {
     }
 
     // cover player loss cases
-    if ((playerSelection === "paper" && computerSelection === "scissor")
+    if ((playerSelection === "paper" && computerSelection === "scissors")
         || (playerSelection === "rock" && computerSelection === "paper")
         || (playerSelection === "scissors" && computerSelection === "rock")) {
         computerWinCount++;
@@ -44,7 +44,23 @@ function getComputerChoice() {
 function beginGame(e) {
     let playerSelection = e.target.innerText;
     let computerSelection = getComputerChoice();
-    return console.log(playRound(playerSelection, computerSelection));
+
+    const roundResultsDiv = document.createElement('div');
+    roundResultsDiv.textContent = playRound(playerSelection, computerSelection);
+    const body = document.querySelector('body');
+    body.appendChild(roundResultsDiv);
+
+    if (playerWinCount === 5 || computerWinCount === 5) {
+        if (playerWinCount === computerWinCount) {
+            console.log("Draw! Your skill has been matched.");
+        }
+        else if (playerWinCount > computerWinCount) {
+            console.log("Congrats! You're better than a bot.")
+        }
+        else {
+            console.log("You lose. Not a good look.")
+        }
+    }
 }
 
 const playButtons = document.querySelectorAll('button.play-option');
@@ -61,16 +77,9 @@ playButtons.forEach(button => {
 // do not add event listeners in a while loop, just leave it to a regular counter to pick up on it. Don't click buttons in a loop. 
 // rather disable the event listeners 
 
-/*if (playerWinCount === computerWinCount) {
-    console.log("Draw! Your skill has been matched.");
-}
-else if (playerWinCount > computerWinCount) {
-    console.log("Congrats! You're better than a bot.")
-}
-else {
-    console.log("You lose. Not a good look.")
-}*/
 
 
+/* There is no on form load function so I'm not sure when these functions kick in or how long they are active.
+If it is for the entire duration of the page, what does that mean? */
 
 
