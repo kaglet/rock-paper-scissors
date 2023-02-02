@@ -67,12 +67,6 @@ function game() {
 // do not add event listeners in a while loop, just leave it to a regular counter to pick up on it. Don't click buttons in a loop. 
 // rather disable the event listeners 
 
-do {
-    game();
-    console.log(playerWinCount);
-    console.log(computerWinCount);
-} while (playerWinCount < 5 && computerWinCount < 5);
-
 if (playerWinCount === computerWinCount) {
     console.log("Draw! Your skill has been matched.");
 }
