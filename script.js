@@ -25,7 +25,7 @@ function playRound(playerSelection, computerSelection) {
     // cover player loss cases
     if ((playerSelection === "paper" && computerSelection === "scissor")
         || (playerSelection === "rock" && computerSelection === "paper")
-        || (playerSelection === "scissor" && computerSelection === "rock")) {
+        || (playerSelection === "scissors" && computerSelection === "rock")) {
         computerWinCount++;
         return `You lose! ${computerSelection} beats ${playerSelection}.`;
     }
@@ -42,7 +42,7 @@ function getComputerChoice() {
 };
 
 function beginGame(e) {
-    let playerSelection = e.target.value;
+    let playerSelection = e.target.innerText;
     let computerSelection = getComputerChoice();
     return console.log(playRound(playerSelection, computerSelection));
 }
