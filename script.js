@@ -89,6 +89,8 @@ playButtons.forEach(button => {
 If it is for the entire duration of the page, what does that mean? */
 
 /* TO-DO:
-    On click use target's attribute to tell if its scissor, rock, or paper
+    On click use target's attribute to tell if its scissor, rock, or paper.
+    Add animation to game description.
+    Add rolling in animation to game choices.
 */
 

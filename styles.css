@@ -33,6 +33,7 @@ button {
     width: 120px;
     height: 120px;
     background-color: white;
+    border-radius: 10px;
 }
 
 h1 {
@@ -58,10 +59,15 @@ img {
     margin: auto;
     padding: 40px 80px 20px 50px; 
     font-size: 25px;
+    border-radius: 10px;
 }
 
 i {
     font-size: 80px;
+}
+
+.player > i {
+    transform: scale(-1, 1);
 }
 
 /* Black, peach, plum red, white, metal grey is my color palette. */
