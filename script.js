@@ -76,7 +76,7 @@ function beginGame(e) {
     }
 }
 
-const playButtons = document.querySelectorAll('button.play-option');
+const playButtons = document.querySelectorAll('button.play-option.player');
 
 //onClick play a round with parameters of playerSelection and computerSelection
 playButtons.forEach(button => {
