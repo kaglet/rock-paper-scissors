@@ -45,13 +45,13 @@ function beginGame(e) {
     let playerSelection = e.target.innerText;
     let computerSelection = getComputerChoice();
 
-    const roundResultsDiv = document.createElement('div');
+    const roundResultsDiv = document.querySelector('div.round-result');
     roundResultsDiv.textContent = playRound(playerSelection, computerSelection);
     const body = document.querySelector('body');
-    body.appendChild(roundResultsDiv);
+    // body.appendChild(roundResultsDiv);
 
     if (playerWinCount === 5 || computerWinCount === 5) {
-        const gameResultsDiv = document.createElement('div');
+        const gameResultsDiv = document.querySelector('div.game-result');
         const body = document.querySelector('body');
 
         if (playerWinCount === computerWinCount) {
@@ -68,7 +68,7 @@ function beginGame(e) {
         playerWinCount = 0;
         computerWinCount = 0;
 
-        body.appendChild(gameResultsDiv);
+        // body.appendChild(gameResultsDiv);
         // Optionally add classes or attributes to change how it is styled dynamically.
 
         // Add try again button to maybe refresh the page or clear all the divs and reenable event listeners or just toggle a playable class.

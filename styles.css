@@ -55,6 +55,8 @@ img {
     height: 100px;
     outline: 2px solid pink;
     margin: auto;
+    padding: 40px 80px 20px 50px; /*Space available for the content is eaten into from padding and margin*/
+    font-size: 25px;
 }
 
 /* Black, peach, plum red, white, metal grey is my color palette. */
