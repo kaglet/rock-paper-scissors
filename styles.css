@@ -55,36 +55,10 @@ img {
     height: 100px;
     outline: 2px solid pink;
     margin: auto;
-    padding: 40px 80px 20px 50px; /*Space available for the content is eaten into from padding and margin*/
+    padding: 40px 80px 20px 50px; 
     font-size: 25px;
 }
 
 /* Black, peach, plum red, white, metal grey is my color palette. */
 
-/* Notes to self: 
 
-Don't panic to feel like you need to recall or know everything. 
-Reference only what is of utility to now. Dig through past sources from TOP and my notes 
-first before wasting time searching for new sources. Because then I am not
-spreading myself too thin, I am giving myself enough depth of resources
-keeping things more concise and localized. 
-
-There are so many options and use cases that its impossible memorize them all
-or to know all the various combinations. You need to explore them 
-on the fly. Only know the basic building blocks. 
-You will build the combinations using the building blocks.
-
-Just know the concept of generally what layout algorithm 
-can get what done in terms of layout.
-
-It's enough to know: the option exists, and whereabout to find it.
-
-Also balance, think which code leads to more to manage
-or less to manage (more maintainable code).
-
-It's ok to look for inspiration, criticize it, 
-how you would like your workflow.
-
-Work outside to in, in terms of flow and layout.
-Work inner to outer in terms of size as usually parent auto-fits to content.
-It's also a good idea to set base sizes before using other flexbox properties.*/
