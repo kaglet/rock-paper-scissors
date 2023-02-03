@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./script.js" defer></script>
     <link href="./styles.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/fbeeabe0fc.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 
@@ -16,27 +17,31 @@
 
     <div class="main-container">
         <div class="mini-container">
-            <img src="" class="left-aligned player icon" alt="">
+            <div class="left-aligned player icon"> 
+                <i class="fa-solid fa-user"></i>
+            </div>
             <div class="score player">Score: </div>
         </div>
 
 
         <div class="button-container left-aligned">
-            <button class="play-option player">Rock</button>
-            <button class="play-option player">Paper</button>
-            <button class="play-option player">Scissors</button>
+            <button class="play-option player"><i class="fa-solid fa-hand-back-fist"></i></button>
+            <button class="play-option player"><i class="fa-solid fa-hand"></i></button>
+            <button class="play-option player"><i class="fa-solid fa-hand-scissors"></i></button>
         </div>
 
         <div class="round-result game-result"></div>
 
         <div class="button-container right-aligned">
-            <button class="play-option computer">Rock</button>
-            <button class="play-option computer">Paper</button>
-            <button class="play-option computer">Scissors</button>
+            <button class="play-option computer"><i class="fa-solid fa-hand-back-fist"></i></button>
+            <button class="play-option computer"><i class="fa-solid fa-hand"></i></button>
+            <button class="play-option computer"><i class="fa-solid fa-hand-scissors"></i></button>
         </div>
 
         <div class="mini-container">
-            <img src="" class="right-aligned player icon" alt="">
+            <div class="right-aligned computer icon"> 
+                <i class="fa-solid fa-robot"></i>
+            </div>
             <div class="score computer">Score: </div>
         </div>
     </div>
