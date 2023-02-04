@@ -45,7 +45,7 @@ h1 {
     text-align: center;
     text-transform: uppercase;
     padding: 60px 0px;
-    color: rgb(223, 104, 104);
+    color: rgb(238, 70, 70);
     border-bottom: 2px dashed #A8A9AD;
     font-family: "Rakkas", sans-serif; 
 }
@@ -80,19 +80,19 @@ i {
 }
 
 .left-aligned i, .score.player {
-    color: rgb(246, 194, 51);
+    color: rgb(226, 160, 29);
 }
 
 .left-aligned button, .left-aligned div {
-    border: 2px dashed rgb(255, 190, 11); 
+    border: 2px dashed rgb(226, 160, 29); 
 }
 
 .right-aligned i, .score.computer {
-    color: rgb(89, 152, 197);
+    color: rgb(77, 142, 189);
 }
 
 .right-aligned button, .right-aligned div {
-    border: 2px dashed rgb(89, 152, 197); 
+    border: 2px dashed rgb(77, 142, 189); 
 }
 
 .player > i {
