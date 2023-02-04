@@ -121,8 +121,21 @@ div.footer {
     font-family: "Amiko", serif; 
 }
 
-.footer a {
+div .play-again i {
+    font-size: 20px;
+}
 
+div .play-again {
+    align-self: center;
+    margin-top: 40px;
+    font-family: "Amiko", serif; 
+    font-size: 25px;
+}
+
+.game-session-details {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Black, peach, plum red, white, metal grey is my color palette. */

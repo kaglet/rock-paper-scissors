@@ -125,5 +125,6 @@ If it is for the entire duration of the page, what does that mean? */
     Add play again option with a retry or reload icon.
     Add glow on hover and enlarge animation when clicked.
     Add glow around winner icon if they win.
+    On hover over retry icon, change mouse cursor type to the hand, and enlarge play again on hover. 
 */
 
