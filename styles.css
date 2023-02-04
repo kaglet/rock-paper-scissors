@@ -39,22 +39,23 @@ button {
 }
 
 h1 {
-    font-size: 70px;
+    font-size: 80px;
     /* margin: 60px auto 0 auto; */
     flex-grow: 1;
     text-align: center;
     text-transform: uppercase;
     padding: 60px 0px;
-    color: rgb(220, 117, 143);
+    color: rgb(223, 104, 133);
     border-bottom: 2px dashed #A8A9AD;
-    /* font-family: "Anton", sans-serif; */
+    font-family: "Rakkas", sans-serif; 
 }
 
 p {
     font-size: 32px;  
     margin: 10px auto 10px auto;
     font-style: italic;
-    font-weight: 500;
+    font-weight: 600;
+    font-family: "Amiko", serif; 
 }
 
 img {
@@ -96,6 +97,10 @@ i {
 
 .player > i {
     transform: scale(-1, 1);
+}
+
+.score {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 /* Black, peach, plum red, white, metal grey is my color palette. */
