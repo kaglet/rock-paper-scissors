@@ -45,7 +45,7 @@ h1 {
     text-align: center;
     text-transform: uppercase;
     padding: 60px 0px;
-    color: rgb(223, 104, 133);
+    color: rgb(223, 104, 104);
     border-bottom: 2px dashed #A8A9AD;
     font-family: "Rakkas", sans-serif; 
 }
@@ -53,7 +53,7 @@ h1 {
 p {
     font-size: 32px;  
     margin: 10px auto 10px auto;
-    font-style: italic;
+    /* font-style: italic; */
     font-weight: 600;
     font-family: "Amiko", serif; 
 }
@@ -101,6 +101,23 @@ i {
 
 .score {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.footer i {
+    font-size: 30px;
+}
+
+
+div.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-family: "Amiko", serif; 
+}
+
+.footer a {
+
 }
 
 /* Black, peach, plum red, white, metal grey is my color palette. */
