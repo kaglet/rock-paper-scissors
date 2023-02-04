@@ -2,6 +2,8 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    background-color: hsl(0, 0%, 0%);
+    color: whitesmoke;
 }
 
 body {
@@ -14,7 +16,7 @@ body {
     display: flex;
     gap: 20px;
     align-items: center;
-    padding: 40px 150px;
+    padding: 90px 150px 40px;
 }
 
 .button-container {
@@ -32,19 +34,27 @@ button {
     margin: 20px;
     width: 120px;
     height: 120px;
-    background-color: white;
+    background-color: hsla(120, 100%, 100%, 0);
     border-radius: 10px;
 }
 
 h1 {
     font-size: 70px;
-    margin: 60px auto 0 auto;
+    /* margin: 60px auto 0 auto; */
+    flex-grow: 1;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 60px 0px;
+    color: rgb(220, 117, 143);
+    border-bottom: 2px dashed #A8A9AD;
+    /* font-family: "Anton", sans-serif; */
 }
 
 p {
-    font-size: 26px;  
-    margin: 40px auto;
+    font-size: 32px;  
+    margin: 10px auto 10px auto;
     font-style: italic;
+    font-weight: 500;
 }
 
 img {
@@ -55,15 +65,33 @@ img {
 .round-result, .game-result {
     width: 500px;
     height: 100px;
-    outline: 2px solid black;
+    /* outline: 2px solid black; */
     margin: auto;
     padding: 40px 80px 20px 50px; 
     font-size: 25px;
     border-radius: 10px;
+    border: 2px solid azure;
+    background-color: azure;
 }
 
 i {
     font-size: 80px;
+}
+
+.left-aligned i, .score.player {
+    color: rgb(246, 194, 51);
+}
+
+.left-aligned button, .left-aligned div {
+    border: 2px dashed rgb(255, 190, 11); 
+}
+
+.right-aligned i, .score.computer {
+    color: rgb(89, 152, 197);
+}
+
+.right-aligned button, .right-aligned div {
+    border: 2px dashed rgb(89, 152, 197); 
 }
 
 .player > i {
@@ -76,6 +104,11 @@ i {
 - More rounded edges, with unique borders and trims, fancy fonts, color to the page.
 - Color palette ideas:
     - Plum red, metallic blue, wheat yellow, white.
+- I want the header to stretch to fill the entire inline space but for the content to be centered
+    - Either wrap it in a div or just use text-align
+- Add titles: You, computer.
+- Add round counter and restart option.
+- Increase font size slightly, play around with spacing, change styles to sans serif.
 */
 
 
