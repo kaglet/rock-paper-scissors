@@ -68,11 +68,16 @@ img {
     height: 100px;
     /* outline: 2px solid black; */
     margin: auto;
-    padding: 40px 80px 20px 50px; 
     font-size: 25px;
     border-radius: 10px;
     border: 2px solid azure;
     background-color: azure;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: "Amiko", serif; 
 }
 
 i {
@@ -100,7 +105,7 @@ i {
 }
 
 .score {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "Amiko", serif; 
 }
 
 .footer i {
@@ -123,6 +128,8 @@ div.footer {
 /* Black, peach, plum red, white, metal grey is my color palette. */
 
 /* Checklist of wants:
+
+- Add nice font to round/game comment.
 - More rounded edges, with unique borders and trims, fancy fonts, color to the page.
 - Color palette ideas:
     - Plum red, metallic blue, wheat yellow, white.
@@ -131,6 +138,8 @@ div.footer {
 - Add titles: You, computer.
 - Add round counter and restart option.
 - Increase font size slightly, play around with spacing, change styles to sans serif.
+- Give text and icons some texture, like a glint or metallic feel.
+- Give some dimensions to elements to not make them feel flat.
 */
 
 
