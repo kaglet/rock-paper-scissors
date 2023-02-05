@@ -1,6 +1,12 @@
 let playerWinCount = 0, computerWinCount = 0;
 
+function disableIcons() {
+
+}
+
 function addPlayAgainOption() {
+    const footer = document.querySelector('.footer');
+    const body = document.querySelector('body');
     const playAgainDiv = document.createElement('div');
     const retryIcon = document.createElement('i');
     const gameSessionDetails = document.querySelector('.game-session-details');
@@ -12,7 +18,7 @@ function addPlayAgainOption() {
     retryIcon.classList.add('fa-rotate-right');
 
     playAgainDiv.appendChild(retryIcon);
-    gameSessionDetails.appendChild(playAgainDiv);
+    body.insertBefore(playAgainDiv, footer);
 }
 
 function getRandomInt(min, max) {
@@ -36,7 +42,7 @@ function playRound(playerSelection, computerSelection) {
         || (playerSelection === "scissors" && computerSelection === "paper")
         || (playerSelection === "paper" && computerSelection === "rock")) {
         playerWinCount++;
-        playerScoreDiv.textContent = `Score: ${playerWinCount}`; 
+        playerScoreDiv.textContent = `Score: ${playerWinCount}`;
         playerSelection = playerSelection.replace(playerSelection[0], playerSelection[0].toUpperCase());
         return `You win! ${playerSelection} beats ${computerSelection}.`;
     }
@@ -46,7 +52,7 @@ function playRound(playerSelection, computerSelection) {
         || (playerSelection === "rock" && computerSelection === "paper")
         || (playerSelection === "scissors" && computerSelection === "rock")) {
         computerWinCount++;
-        computerScoreDiv.textContent = `Score: ${computerWinCount}`; 
+        computerScoreDiv.textContent = `Score: ${computerWinCount}`;
         computerSelection = computerSelection.replace(computerSelection[0], computerSelection[0].toUpperCase());
         return `You lose! ${computerSelection} beats ${playerSelection}.`;
     }
@@ -107,6 +113,7 @@ function beginGame(e) {
         computerWinCount = 0;
 
         addPlayAgainOption();
+        disableIcons();
 
         // Add try again button to maybe refresh the page or clear all the divs and reenable event listeners or just toggle a playable class.
         // Or just disable buttons.
@@ -136,9 +143,17 @@ If it is for the entire duration of the page, what does that mean? */
 
     Add animation to game description.
     Add rolling in animation to game choices.
-    Add play again option with a retry or reload icon.
+    Add play again option with a retry or reload icon. ✔
+        - Do not allow play again to shift other content up.
     Add glow on hover and enlarge animation when clicked.
     Add glow around winner icon if they win.
     On hover over retry icon, change mouse cursor type to the hand, and enlarge play again on hover. 
+
+    Watch video about bubbling and propagation for onClick() event.
+*/
+
+/* ISSUES:
+The div as auto-sized to fit to content. 
+
 */
 

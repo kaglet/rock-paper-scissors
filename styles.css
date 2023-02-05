@@ -15,8 +15,8 @@ body {
 .main-container {
     display: flex;
     gap: 20px;
-    align-items: center;
     padding: 90px 150px 40px;
+    justify-content: space-between;
 }
 
 .button-container {
@@ -40,7 +40,6 @@ button {
 
 h1 {
     font-size: 80px;
-    /* margin: 60px auto 0 auto; */
     flex-grow: 1;
     text-align: center;
     text-transform: uppercase;
@@ -53,7 +52,6 @@ h1 {
 p {
     font-size: 32px;  
     margin: 10px auto 10px auto;
-    /* font-style: italic; */
     font-weight: 600;
     font-family: "Amiko", serif; 
 }
@@ -66,18 +64,19 @@ img {
 .round-result, .game-result {
     width: 500px;
     height: 100px;
-    /* outline: 2px solid black; */
-    margin: auto;
     font-size: 25px;
     border-radius: 10px;
     border: 2px solid azure;
     background-color: azure;
     color: black;
+    /*for text alignment*/
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     font-family: "Amiko", serif; 
+    /*position self*/
+    align-self: center;
 }
 
 i {
@@ -121,22 +120,30 @@ div.footer {
     font-family: "Amiko", serif; 
 }
 
-div .play-again i {
+.play-again i {
     font-size: 20px;
 }
 
-div .play-again {
-    align-self: center;
-    margin-top: 40px;
+.play-again {
+
+    text-align: center;
+    margin-top: -240px;
     font-family: "Amiko", serif; 
     font-size: 25px;
 }
 
 .game-session-details {
-    margin: auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
+    flex-grow: 1;
+    justify-content: center;
 }
+
+.mini-container {
+    align-self: center;
+}
+
+
 
 /* Black, peach, plum red, white, metal grey is my color palette. */
 
