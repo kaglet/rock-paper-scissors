@@ -1,12 +1,29 @@
 let playerWinCount = 0, computerWinCount = 0;
 
 function disableIcons() {
+    const playButtons = document.querySelectorAll('button');
 
+    playButtons.forEach(button => {
+        button.removeEventListener('click', beginGame);
+        button.classList.toggle("greyed-out");
+    });
+
+    const icons = document.querySelectorAll('.main-container i');
+    console.log(icons);
+
+    icons.forEach(icon => {
+        icon.classList.toggle("greyed-out");
+    });
+
+    const scoreDivs = document.querySelectorAll('.score');
+    console.log(scoreDivs);
+
+    scoreDivs.forEach(scoreDiv => {
+        scoreDiv.classList.toggle("greyed-out");
+    });
 }
 
 function addPlayAgainOption() {
-    const footer = document.querySelector('.footer');
-    const body = document.querySelector('body');
     const playAgainDiv = document.createElement('div');
     const retryIcon = document.createElement('i');
     const gameSessionDetails = document.querySelector('.game-session-details');
@@ -18,7 +35,7 @@ function addPlayAgainOption() {
     retryIcon.classList.add('fa-rotate-right');
 
     playAgainDiv.appendChild(retryIcon);
-    body.insertBefore(playAgainDiv, footer);
+    gameSessionDetails.appendChild(playAgainDiv);
 }
 
 function getRandomInt(min, max) {
@@ -84,8 +101,8 @@ function beginGame(e) {
         default:
             break;
     }
-    console.log(playerSelection);
-    console.log(e);
+    // console.log(playerSelection);
+    // console.log(e);
 
     let computerSelection = getComputerChoice();
 
