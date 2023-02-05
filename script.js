@@ -1,5 +1,20 @@
 let playerWinCount = 0, computerWinCount = 0;
 
+function addPlayAgainOption() {
+    const playAgainDiv = document.createElement('div');
+    const retryIcon = document.createElement('i');
+    const gameSessionDetails = document.querySelector('.game-session-details');
+
+    playAgainDiv.textContent = `Play again? `;
+    playAgainDiv.classList.add('play-again');
+
+    retryIcon.classList.add('fa-solid');
+    retryIcon.classList.add('fa-rotate-right');
+
+    playAgainDiv.appendChild(retryIcon);
+    gameSessionDetails.appendChild(playAgainDiv);
+}
+
 function getRandomInt(min, max) {
     let randomNumber = Math.floor(Math.random() * (max - min) + min);
     return randomNumber;
@@ -91,8 +106,7 @@ function beginGame(e) {
         playerWinCount = 0;
         computerWinCount = 0;
 
-        // body.appendChild(gameResultsDiv);
-        // Optionally add classes or attributes to change how it is styled dynamically.
+        addPlayAgainOption();
 
         // Add try again button to maybe refresh the page or clear all the divs and reenable event listeners or just toggle a playable class.
         // Or just disable buttons.
