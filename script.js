@@ -4,14 +4,11 @@ function printResults() {
     const gameResultsDiv = document.querySelector('div.game-result');
     const body = document.querySelector('body');
 
-    if (playerWinCount === computerWinCount) {
-        gameResultsDiv.textContent = "Draw! Your skill has been matched.";
-    }
-    else if (playerWinCount > computerWinCount) {
-        gameResultsDiv.textContent = "Congrats! You're better than a bot.";
+    if (playerWinCount > computerWinCount) {
+        gameResultsDiv.textContent = "Congrats! You're a winner, for once :).";
     }
     else {
-        gameResultsDiv.textContent = "You lose. Not a good look.";
+        gameResultsDiv.textContent = "You lose. Not a good look :o.";
     }
 }
 
@@ -107,7 +104,7 @@ function playRound(playerSelection, computerSelection) {
 
     // if player and computer play the same then output draw
     if (playerSelection === computerSelection) {
-        return `Draw! Both played ${playerSelection}`;
+        return `Draw! Both played ${playerSelection}.`;
     }
 
     playerWins = (playerSelection === "rock" && computerSelection === "scissors")
