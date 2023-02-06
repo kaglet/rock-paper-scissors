@@ -1,26 +1,69 @@
 let playerWinCount = 0, computerWinCount = 0;
 
-function disableIcons() {
+function printResults() {
+    const gameResultsDiv = document.querySelector('div.game-result');
+    const body = document.querySelector('body');
+
+    if (playerWinCount === computerWinCount) {
+        gameResultsDiv.textContent = "Draw! Your skill has been matched.";
+    }
+    else if (playerWinCount > computerWinCount) {
+        gameResultsDiv.textContent = "Congrats! You're better than a bot.";
+    }
+    else {
+        gameResultsDiv.textContent = "You lose. Not a good look.";
+    }
+}
+
+function enableIcons() {
     const playButtons = document.querySelectorAll('button');
 
     playButtons.forEach(button => {
-        button.removeEventListener('click', beginGame);
+        button.addEventListener('click', playGame);
         button.classList.toggle("greyed-out");
     });
 
     const icons = document.querySelectorAll('.main-container i');
-    console.log(icons);
 
     icons.forEach(icon => {
         icon.classList.toggle("greyed-out");
     });
 
     const scoreDivs = document.querySelectorAll('.score');
-    console.log(scoreDivs);
 
     scoreDivs.forEach(scoreDiv => {
         scoreDiv.classList.toggle("greyed-out");
     });
+}
+
+function disableIcons() {
+    const playButtons = document.querySelectorAll('button');
+
+    playButtons.forEach(button => {
+        button.removeEventListener('click', playGame);
+        button.classList.toggle("greyed-out");
+    });
+
+    const icons = document.querySelectorAll('.main-container i');
+
+    icons.forEach(icon => {
+        icon.classList.toggle("greyed-out");
+    });
+
+    const scoreDivs = document.querySelectorAll('.score');
+
+    scoreDivs.forEach(scoreDiv => {
+        scoreDiv.classList.toggle("greyed-out");
+    });
+}
+
+function removePlayAgainOption (gameSessionDetails, playAgainDiv) {
+    gameSessionDetails.removeChild(playAgainDiv);
+}
+
+function removeGameResultsText() {
+    const roundResultsDiv = document.querySelector('div.round-result');
+    roundResultsDiv.textContent = "";
 }
 
 function addPlayAgainOption() {
@@ -36,6 +79,21 @@ function addPlayAgainOption() {
 
     playAgainDiv.appendChild(retryIcon);
     gameSessionDetails.appendChild(playAgainDiv);
+
+    retryIcon.addEventListener('click', () => {
+        enableIcons();
+        removePlayAgainOption(gameSessionDetails, playAgainDiv);
+        showScores();
+        removeGameResultsText();
+    });
+}
+
+function showScores() {
+    const computerScoreDiv = document.querySelector('.score.computer');
+    const playerScoreDiv = document.querySelector('.score.player');
+
+    computerScoreDiv.textContent = `Score ${computerWinCount}`;
+    playerScoreDiv.textContent = `Score ${playerWinCount}`;
 }
 
 function getRandomInt(min, max) {
@@ -46,30 +104,31 @@ function getRandomInt(min, max) {
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
-    const computerScoreDiv = document.querySelector('.score.computer');
-    const playerScoreDiv = document.querySelector('.score.player');
 
     // if player and computer play the same then output draw
     if (playerSelection === computerSelection) {
         return `Draw! Both played ${playerSelection}`;
     }
 
+    playerWins = (playerSelection === "rock" && computerSelection === "scissors")
+    || (playerSelection === "scissors" && computerSelection === "paper")
+    || (playerSelection === "paper" && computerSelection === "rock");
+
     // cover player win cases
-    if ((playerSelection === "rock" && computerSelection === "scissors")
-        || (playerSelection === "scissors" && computerSelection === "paper")
-        || (playerSelection === "paper" && computerSelection === "rock")) {
+    if (playerWins) {
         playerWinCount++;
-        playerScoreDiv.textContent = `Score: ${playerWinCount}`;
+        showScores();
         playerSelection = playerSelection.replace(playerSelection[0], playerSelection[0].toUpperCase());
         return `You win! ${playerSelection} beats ${computerSelection}.`;
     }
 
+    playerLoses = (playerSelection === "paper" && computerSelection === "scissors")
+    || (playerSelection === "rock" && computerSelection === "paper")
+    || (playerSelection === "scissors" && computerSelection === "rock");
     // cover player loss cases
-    if ((playerSelection === "paper" && computerSelection === "scissors")
-        || (playerSelection === "rock" && computerSelection === "paper")
-        || (playerSelection === "scissors" && computerSelection === "rock")) {
+    if (playerLoses) {
         computerWinCount++;
-        computerScoreDiv.textContent = `Score: ${computerWinCount}`;
+        showScores();
         computerSelection = computerSelection.replace(computerSelection[0], computerSelection[0].toUpperCase());
         return `You lose! ${computerSelection} beats ${playerSelection}.`;
     }
@@ -85,7 +144,7 @@ function getComputerChoice() {
     }
 };
 
-function beginGame(e) {
+function playGame(e) {
     let playerSelection = "";
     switch (true) {
         case e.target.classList.contains("rock"):
@@ -101,29 +160,15 @@ function beginGame(e) {
         default:
             break;
     }
-    // console.log(playerSelection);
-    // console.log(e);
 
     let computerSelection = getComputerChoice();
 
     const roundResultsDiv = document.querySelector('div.round-result');
     roundResultsDiv.textContent = playRound(playerSelection, computerSelection);
     const body = document.querySelector('body');
-    // body.appendChild(roundResultsDiv);
 
     if (playerWinCount === 5 || computerWinCount === 5) {
-        const gameResultsDiv = document.querySelector('div.game-result');
-        const body = document.querySelector('body');
-
-        if (playerWinCount === computerWinCount) {
-            gameResultsDiv.textContent = "Draw! Your skill has been matched.";
-        }
-        else if (playerWinCount > computerWinCount) {
-            gameResultsDiv.textContent = "Congrats! You're better than a bot.";
-        }
-        else {
-            gameResultsDiv.textContent = "You lose. Not a good look.";
-        }
+        printResults();
 
         // Reset win counts
         playerWinCount = 0;
@@ -141,7 +186,7 @@ const playButtons = document.querySelectorAll('button.play-option.player');
 
 //onClick play a round with parameters of playerSelection and computerSelection
 playButtons.forEach(button => {
-    button.addEventListener('click', beginGame);
+    button.addEventListener('click', playGame);
 });
 
 
@@ -154,8 +199,9 @@ If it is for the entire duration of the page, what does that mean? */
 
     Update scores with each round. ✔
     Display round counter. 
-    When game is done grey the icons out and disable clicking ability.
-    Retry resets scores and returns color.
+    When game is done grey the icons out and disable clicking ability. ✔
+    Retry resets scores, returns color and functionality. Need to code to restart the stack frame somehow.
+    Not keep going.
     Update win and lose comments.
 
     Add animation to game description.
