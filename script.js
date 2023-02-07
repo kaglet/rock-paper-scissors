@@ -15,11 +15,20 @@ function printGameResults() {
     }
 }
 
-function addPlayerButtonsEventListeners() {
+function addPlayerButtonsClickListeners() {
     const playButtons = document.querySelectorAll('button.play-option.player');
 
     playButtons.forEach(button => {
         button.addEventListener('click', playRound);
+    });
+}
+
+function addPlayerButtonsHoverListeners() {
+    const playButtons = document.querySelectorAll('button.play-option.player');
+
+    playButtons.forEach(button => {
+        button.addEventListener('mouseover', button.classList.add('hover'));
+        button.addEventListener('mouseout', button.classList.add('hover'));
     });
 }
 
@@ -228,13 +237,15 @@ function playRound(e) {
     const roundResultsDiv = document.querySelector('div.round-result');
     roundResultsDiv.textContent = determineWinner(playerSelection, computerSelection);
 
+    
+
     if (playerWinCount === 5 || computerWinCount === 5) {
         endGame();
     }
 }
 
-addPlayerButtonsEventListeners();
-
+addPlayerButtonsClickListeners();
+addPlayerButtonsHoverListeners();
 
 
 
