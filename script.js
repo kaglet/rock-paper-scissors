@@ -216,6 +216,7 @@ function endGame() {
 
 // My priority is to keep the main flow of the round to this function, true to its name of course. 
 function playRound(e) {
+    e.target.classList.add('clicked');
     let playerSelection = "";
     switch (true) {
         case e.target.classList.contains("rock"):
@@ -236,8 +237,6 @@ function playRound(e) {
 
     const roundResultsDiv = document.querySelector('div.round-result');
     roundResultsDiv.textContent = determineWinner(playerSelection, computerSelection);
-
-    
 
     if (playerWinCount === 5 || computerWinCount === 5) {
         endGame();
