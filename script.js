@@ -16,7 +16,7 @@ function enableIcons() {
     const playButtons = document.querySelectorAll('button');
 
     playButtons.forEach(button => {
-        button.addEventListener('click', playGame);
+        button.addEventListener('click', initializeBeforeGame);
         button.classList.toggle("greyed-out");
     });
 
@@ -36,8 +36,10 @@ function enableIcons() {
 function disableIcons() {
     const playButtons = document.querySelectorAll('button');
 
+    disablePlayerOptionEventListeners();
+    
     playButtons.forEach(button => {
-        button.removeEventListener('click', playGame);
+        button.removeEventListener('click', initializeBeforeGame);
         button.classList.toggle("greyed-out");
     });
 
@@ -141,12 +143,18 @@ function getComputerChoice() {
     }
 };
 
-function isBorderTransition(e) {
-    return e.propertyName === 'transition';
+function hasGrowthTransitioned(e) {
+    return e.propertyName === 'transform';
 }
 
 function disablePlayerOptionEventListeners() {
+    const playButtons = document.querySelectorAll('button.play-option.player');
 
+    playButtons.forEach(button => {
+        button.removeEventListener('click', initializeBeforeGame);
+        button.removeEventListener('mouseover', () => button.classList.toggle('hoveredOn'));
+        button.removeEventListener('mouseout', () => button.classList.remove('hoveredOn'));
+    });
 }
 
 function enablePlayerOptionEventListeners() {
@@ -155,34 +163,62 @@ function enablePlayerOptionEventListeners() {
     playButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             // button.classList.toggle('clicked');
-            playGame(e);
+            initializeBeforeGame(e);
         });
+
         button.addEventListener('mouseover', () => button.classList.toggle('hoveredOn'));
+        
         // Add this or else it will keep toggling hoveredOn class in inconsistent ways to the eye, but consistent to the code
-        button.addEventListener('mouseout', () => button.classList.toggle('hoveredOn'));
+        button.addEventListener('mouseout', () => button.classList.remove('hoveredOn'));
     });
 }
 
-function telegraphComputerSelection(computerSelection) {
-    /* Round is played strictly after computer has finished making selection. */
-    /* Clicked events are strictly removed once a round result is up. */
+function playGame(playerSelection, computerSelection) {
+    const roundResultsDiv = document.querySelector('div.round-result');
+    roundResultsDiv.textContent = playRound(playerSelection, computerSelection);
+    const body = document.querySelector('body');
+
+    if (playerWinCount === 5 || computerWinCount === 5) {
+        printResults();
+
+        // Reset win counts
+        playerWinCount = 0;
+        computerWinCount = 0;
+
+        addPlayAgainOption();
+        disableIcons();
+    }
+}
+
+function telegraphComputerSelection(playerSelection, computerSelection) {
+    // We play round strictly after computer has finished making and telegraphing selection. 
+    
     let buttonSelected = document.querySelector(`button.computer.${computerSelection}`);
     buttonSelected.classList.toggle('hoveredOn');
-    // At the end of the transition add the glow, disable player EventListeners, play a round, transition out then remove the glow
-    // Make sure the code executes at the end of a specific transition not any transition.
+    // At the end of the transition
     buttonSelected.addEventListener('transitionend', (e) => {
-        if (isBorderTransition(e) === true) {
+        // Make sure event of this button executes only after end of a specific transition not just any.
+        if (hasGrowthTransitioned(e) === true) {
             // Add the sustained glow
             buttonSelected.classList.toggle('clicked');
 
+            // Just in the rare instances that a player is playing too fast for the computer to respond with a move and its animations
             disablePlayerOptionEventListeners();
 
-            buttonSelected.classList.remove('hoveredOn')
+            // Play round
+            playGame(playerSelection, computerSelection);
+
+            // Since results are displayed:
+            // Remove the glow
+            buttonSelected.classList.remove('clicked');
+
+            // Remove hover on effect
+            buttonSelected.classList.remove('hoveredOn');
         }
-    });
+    }, {once: true});
 }
 
-function playGame(e) {
+function initializeBeforeGame(e) {
     let playerSelection = "";
     switch (true) {
         case e.target.classList.contains("rock"):
@@ -201,38 +237,29 @@ function playGame(e) {
 
     let computerSelection = getComputerChoice();
 
-    telegraphComputerSelection(computerSelection);
-
-    /*const roundResultsDiv = document.querySelector('div.round-result');
-    roundResultsDiv.textContent = playRound(playerSelection, computerSelection);
-    const body = document.querySelector('body');
-
-    if (playerWinCount === 5 || computerWinCount === 5) {
-        printResults();
-
-        // Reset win counts
-        playerWinCount = 0;
-        computerWinCount = 0;
-
-        addPlayAgainOption();
-        disableIcons();
-    }*/
+    telegraphComputerSelection(playerSelection, computerSelection);
 }
+
 
 enablePlayerOptionEventListeners();
 
-const playButtons = document.querySelectorAll('button.play-option.player');
 
-playButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-        // button.classList.toggle('clicked');
-        playGame(e);
-    });
-    button.addEventListener('mouseover', () => button.classList.toggle('hoveredOn'));
-    // Add this or else it will keep toggling hoveredOn class in inconsistent ways to the eye, but consistent to the code
-    button.addEventListener('mouseout', () => button.classList.toggle('hoveredOn'));
-});
 
+
+
+/* There are two transitionends: One when transform effect is added, then removed.
+Hence event is listened for twice. */
+
+/* I have fixed the above issue. 
+
+- Only issue left is at the game end
+button disabling fails, elements are still clickable and computer still
+responds. 
+
+- Other issue is for some reason after each game, on any click,
+two computer elements have event listeners triggered for hover, yet only
+one is clicked. This never happens again. So I can perhaps step through code
+after one game.*/
 
 
 /* There is no on form load function so I'm not sure when these functions kick in or how long they are active.
@@ -262,6 +289,8 @@ If it is for the entire duration of the page, what does that mean? */
     Watch video about bubbling and propagation for onClick() event.
 
     Refactor code for ease of future management.
+
+    Read over the flow of my program and later clean it up to improve the flow.
 */
 
 /* ISSUES:
