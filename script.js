@@ -46,6 +46,37 @@ function enablePlayerSide() {
     enablePlayerScore();
 }
 
+function enableComputerButtons(){
+    const playButtons = document.querySelectorAll('button.computer');
+
+    playButtons.forEach(button => {
+        button.addEventListener('click', playGame);
+        button.classList.remove("greyed-out");
+    });
+}
+
+function enableComputerIcons(){
+    const icons = document.querySelectorAll('.computer i');
+
+    icons.forEach(icon => {
+        icon.classList.remove("greyed-out");
+    });
+}
+
+function enableComputerScore(){
+    const scoreDivs = document.querySelectorAll('.score.computer');
+
+    scoreDivs.forEach(scoreDiv => {
+        scoreDiv.classList.remove("greyed-out");
+    });
+}
+
+function enableComputerSide() {
+    enableComputerButtons();
+    enableComputerIcons();
+    enableComputerScore();
+}
+
 function disableIcons() {
     const playButtons = document.querySelectorAll('button');
 
@@ -92,6 +123,7 @@ function addPlayAgainOption() {
 
     retryIcon.addEventListener('click', () => {
         enablePlayerSide();
+        enableComputerSide();
         removePlayAgainOption(gameSessionDetails, playAgainDiv);
         showScores();
         removeGameResultsText();
