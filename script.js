@@ -1,6 +1,6 @@
 let playerWinCount = 0, computerWinCount = 0;
 
-function printResults() {
+function printGameResults() {
     const gameResultsDiv = document.querySelector('div.game-result');
     const body = document.querySelector('body');
 
@@ -19,7 +19,7 @@ function addPlayerButtonsEventListeners() {
     const playButtons = document.querySelectorAll('button.play-option.player');
 
     playButtons.forEach(button => {
-        button.addEventListener('click', playGame);
+        button.addEventListener('click', playRound);
     });
 }
 
@@ -27,7 +27,7 @@ function enablePlayerButtons() {
     const playButtons = document.querySelectorAll('button.player');
 
     playButtons.forEach(button => {
-        button.addEventListener('click', playGame);
+        button.addEventListener('click', playRound);
         button.classList.remove("greyed-out");
     });
 }
@@ -58,7 +58,7 @@ function enableComputerButtons() {
     const playButtons = document.querySelectorAll('button.computer');
 
     playButtons.forEach(button => {
-        button.addEventListener('click', playGame);
+        button.addEventListener('click', playRound);
         button.classList.remove("greyed-out");
     });
 }
@@ -89,7 +89,7 @@ function disableIcons() {
     const playButtons = document.querySelectorAll('button');
 
     playButtons.forEach(button => {
-        button.removeEventListener('click', playGame);
+        button.removeEventListener('click', playRound);
         button.classList.toggle("greyed-out");
     });
 
@@ -151,7 +151,7 @@ function getRandomInt(min, max) {
     return randomNumber;
 }
 
-function playRound(playerSelection, computerSelection) {
+function determineWinner(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
 
@@ -194,7 +194,7 @@ function getComputerChoice() {
     }
 };
 
-function playGame(e) {
+function playRound(e) {
     let playerSelection = "";
     switch (true) {
         case e.target.classList.contains("rock"):
@@ -214,11 +214,10 @@ function playGame(e) {
     let computerSelection = getComputerChoice();
 
     const roundResultsDiv = document.querySelector('div.round-result');
-    roundResultsDiv.textContent = playRound(playerSelection, computerSelection);
-    const body = document.querySelector('body');
+    roundResultsDiv.textContent = determineWinner(playerSelection, computerSelection);
 
     if (playerWinCount === 5 || computerWinCount === 5) {
-        printResults();
+        printGameResults();
 
         // Reset win counts
         playerWinCount = 0;
