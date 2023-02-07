@@ -36,7 +36,6 @@ button {
     height: 120px;
     background-color: hsla(120, 100%, 100%, 0);
     border-radius: 10px;
-    transition: transform 0.3s;
 }
 
 h1 {
@@ -150,25 +149,6 @@ button.greyed-out {
 i.greyed-out, .score.greyed-out {
     color: #A8A9AD;
 }
-
-
-
-.left-aligned > button.hoveredOn {
-    transform: scale(1.1);
-}
-
-.right-aligned > button.hoveredOn {
-    transform: scale(1.1);
-}
-
-.left-aligned > button.clicked {
-    box-shadow: 0 0 10px rgb(226, 160, 29);
-}
-
-.right-aligned > button.clicked {
-    box-shadow: 0 0 10px rgb(77, 142, 189);
-}
-
 
 /* Black, peach, plum red, white, metal grey is my color palette. */
 
