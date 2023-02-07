@@ -151,7 +151,7 @@ i.greyed-out, .score.greyed-out {
     color: #A8A9AD;
 }
 
-.left-aligned > button.hoveredOn {
+.left-aligned > button.hover {
     transform: scale(1.1);
 }
 

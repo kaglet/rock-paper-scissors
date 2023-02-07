@@ -243,8 +243,9 @@ function playRound(e) {
     }
 }
 
-addPlayerButtonsClickListeners();
 addPlayerButtonsHoverListeners();
+addPlayerButtonsClickListeners();
+
 
 
 
