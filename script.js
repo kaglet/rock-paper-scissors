@@ -15,25 +15,35 @@ function printResults() {
     }
 }
 
-function enablePlayerSide() {
-    const playButtons = document.querySelectorAll('button');
+function enablePlayerButtons(){
+    const playButtons = document.querySelectorAll('button.player');
 
     playButtons.forEach(button => {
         button.addEventListener('click', playGame);
         button.classList.remove("greyed-out");
     });
+}
 
-    const icons = document.querySelectorAll('.main-container i');
+function enablePlayerIcons(){
+    const icons = document.querySelectorAll('.player i');
 
     icons.forEach(icon => {
         icon.classList.remove("greyed-out");
     });
+}
 
-    const scoreDivs = document.querySelectorAll('.score');
+function enablePlayerScore(){
+    const scoreDivs = document.querySelectorAll('.score.player');
 
     scoreDivs.forEach(scoreDiv => {
         scoreDiv.classList.remove("greyed-out");
     });
+}
+
+function enablePlayerSide() {
+    enablePlayerButtons();
+    enablePlayerIcons();
+    enablePlayerScore();
 }
 
 function disableIcons() {
