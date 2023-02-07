@@ -194,6 +194,18 @@ function getComputerChoice() {
     }
 };
 
+function endGame() {
+    printGameResults();
+
+    // Reset win counts
+    playerWinCount = 0;
+    computerWinCount = 0;
+
+    addPlayAgainOption();
+    disableIcons();
+}
+
+// My priority is to keep the main flow of the round to this function, true to its name of course. 
 function playRound(e) {
     let playerSelection = "";
     switch (true) {
@@ -217,17 +229,7 @@ function playRound(e) {
     roundResultsDiv.textContent = determineWinner(playerSelection, computerSelection);
 
     if (playerWinCount === 5 || computerWinCount === 5) {
-        printGameResults();
-
-        // Reset win counts
-        playerWinCount = 0;
-        computerWinCount = 0;
-
-        addPlayAgainOption();
-        disableIcons();
-
-        // Add try again button to maybe refresh the page or clear all the divs and reenable event listeners or just toggle a playable class.
-        // Or just disable buttons.
+        endGame();
     }
 }
 
