@@ -1,5 +1,13 @@
 let playerWinCount = 0, computerWinCount = 0;
 
+function toggleHoveredOn(button) {
+    
+}
+
+function removeHoveredOn(button) {
+
+}
+
 function printResults() {
     const gameResultsDiv = document.querySelector('div.game-result');
     const body = document.querySelector('body');
@@ -15,8 +23,8 @@ function printResults() {
 function enableIcons() {
     const playButtons = document.querySelectorAll('button');
 
+    enablePlayerOptionEventListeners();
     playButtons.forEach(button => {
-        button.addEventListener('click', initializeBeforeGame);
         button.classList.toggle("greyed-out");
     });
 
@@ -39,8 +47,7 @@ function disableIcons() {
     disablePlayerOptionEventListeners();
     
     playButtons.forEach(button => {
-        button.removeEventListener('click', initializeBeforeGame);
-        button.classList.toggle("greyed-out");
+        button.classList.toggle("greyed-out"); 
     });
 
     const icons = document.querySelectorAll('.main-container i');
@@ -151,7 +158,7 @@ function disablePlayerOptionEventListeners() {
     const playButtons = document.querySelectorAll('button.play-option.player');
 
     playButtons.forEach(button => {
-        button.removeEventListener('click', initializeBeforeGame);
+        button.removeEventListener('click', button.fn3, false);
         button.removeEventListener('mouseover', () => button.classList.toggle('hoveredOn'));
         button.removeEventListener('mouseout', () => button.classList.remove('hoveredOn'));
     });
@@ -161,15 +168,17 @@ function enablePlayerOptionEventListeners() {
     const playButtons = document.querySelectorAll('button.play-option.player');
 
     playButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            // button.classList.toggle('clicked');
+        button.addEventListener('click', button.fn3 = (e) => {
             initializeBeforeGame(e);
-        });
+        }, false); /* This part of code runs twice or more even though none are clicked
+        But I bet the code certainly claims they are clicked from previous event listener not being removed. 
+        It makes sense that it could run twice but that should happen after one game is played at least
+        no because the transition to grow hasn't occurred perhaps. False, because it has been clicked it has transitioned too.*/
 
-        button.addEventListener('mouseover', () => button.classList.toggle('hoveredOn'));
+        button.addEventListener('mouseover', button.fn1 = () => button.classList.toggle('hoveredOn'));
         
         // Add this or else it will keep toggling hoveredOn class in inconsistent ways to the eye, but consistent to the code
-        button.addEventListener('mouseout', () => button.classList.remove('hoveredOn'));
+        button.addEventListener('mouseout', button.fn2 = () => button.classList.remove('hoveredOn'));
     });
 }
 
@@ -203,7 +212,7 @@ function telegraphComputerSelection(playerSelection, computerSelection) {
             buttonSelected.classList.toggle('clicked');
 
             // Just in the rare instances that a player is playing too fast for the computer to respond with a move and its animations
-            disablePlayerOptionEventListeners();
+            // disablePlayerOptionEventListeners();
 
             // Play round
             playGame(playerSelection, computerSelection);
@@ -214,6 +223,9 @@ function telegraphComputerSelection(playerSelection, computerSelection) {
 
             // Remove hover on effect
             buttonSelected.classList.remove('hoveredOn');
+
+            // Allow player to be able to choose again
+            // enablePlayerOptionEventListeners();
         }
     }, {once: true});
 }
@@ -247,25 +259,45 @@ enablePlayerOptionEventListeners();
 
 
 
-/* There are two transitionends: One when transform effect is added, then removed.
-Hence event is listened for twice. */
+/* 
 
-/* I have fixed the above issue. 
+There are two transitionends: One when transform effect is added, then removed.
+Hence event is listened for twice. 
+
+*/
+
+/* 
+
+I have fixed the above issue. 
 
 - Only issue left is at the game end
 button disabling fails, elements are still clickable and computer still
 responds. 
+    - Be careful removing event listeners of anonymous functions.
 
 - Other issue is for some reason after each game, on any click,
 two computer elements have event listeners triggered for hover, yet only
 one is clicked. This never happens again. So I can perhaps step through code
-after one game.*/
+after one game.
+    - I never remove transitionend event ever
+    - It does initialize game twice on button click and gets different computer responses each time.
+    Ok but what prompts it to initialize game twice then do the inner function twice then the inner function twice again,
+    the first time rejecting the boolean true or not even running it for some reason?
+    It should at least run that event listener for transition end.
+
+*/
 
 
-/* There is no on form load function so I'm not sure when these functions kick in or how long they are active.
-If it is for the entire duration of the page, what does that mean? */
+/* 
 
-/* TO-DO:
+There is no on form load function so I'm not sure when these functions kick in or how long they are active.
+If it is for the entire duration of the page, what does that mean? 
+
+*/
+
+/* 
+
+TO-DO:
     On click use target's attribute to tell if its scissor, rock, or paper.
 
     Update scores with each round. ✔
@@ -291,9 +323,12 @@ If it is for the entire duration of the page, what does that mean? */
     Refactor code for ease of future management.
 
     Read over the flow of my program and later clean it up to improve the flow.
+
 */
 
-/* ISSUES:
+/* 
+
+ISSUES:
 The div as auto-sized to fit to content. 
 
 */
