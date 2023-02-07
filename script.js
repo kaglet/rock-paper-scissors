@@ -92,8 +92,8 @@ function showScores() {
     const computerScoreDiv = document.querySelector('.score.computer');
     const playerScoreDiv = document.querySelector('.score.player');
 
-    computerScoreDiv.textContent = `Score ${computerWinCount}`;
-    playerScoreDiv.textContent = `Score ${playerWinCount}`;
+    computerScoreDiv.textContent = `Score: ${computerWinCount}`;
+    playerScoreDiv.textContent = `Score: ${playerWinCount}`;
 }
 
 function getRandomInt(min, max) {
@@ -191,8 +191,6 @@ playButtons.forEach(button => {
 
 
 
-/* There is no on form load function so I'm not sure when these functions kick in or how long they are active.
-If it is for the entire duration of the page, what does that mean? */
 
 /* TO-DO:
     On click use target's attribute to tell if its scissor, rock, or paper.
