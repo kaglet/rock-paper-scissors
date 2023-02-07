@@ -15,24 +15,24 @@ function printResults() {
     }
 }
 
-function enableIcons() {
+function enablePlayerSide() {
     const playButtons = document.querySelectorAll('button');
 
     playButtons.forEach(button => {
         button.addEventListener('click', playGame);
-        button.classList.toggle("greyed-out");
+        button.classList.remove("greyed-out");
     });
 
     const icons = document.querySelectorAll('.main-container i');
 
     icons.forEach(icon => {
-        icon.classList.toggle("greyed-out");
+        icon.classList.remove("greyed-out");
     });
 
     const scoreDivs = document.querySelectorAll('.score');
 
     scoreDivs.forEach(scoreDiv => {
-        scoreDiv.classList.toggle("greyed-out");
+        scoreDiv.classList.remove("greyed-out");
     });
 }
 
@@ -81,7 +81,7 @@ function addPlayAgainOption() {
     gameSessionDetails.appendChild(playAgainDiv);
 
     retryIcon.addEventListener('click', () => {
-        enableIcons();
+        enablePlayerSide();
         removePlayAgainOption(gameSessionDetails, playAgainDiv);
         showScores();
         removeGameResultsText();
@@ -184,7 +184,6 @@ function playGame(e) {
 
 const playButtons = document.querySelectorAll('button.play-option.player');
 
-//onClick play a round with parameters of playerSelection and computerSelection
 playButtons.forEach(button => {
     button.addEventListener('click', playGame);
 });
