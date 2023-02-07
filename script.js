@@ -15,7 +15,15 @@ function printResults() {
     }
 }
 
-function enablePlayerButtons(){
+function addPlayerButtonsEventListeners() {
+    const playButtons = document.querySelectorAll('button.play-option.player');
+
+    playButtons.forEach(button => {
+        button.addEventListener('click', playGame);
+    });
+}
+
+function enablePlayerButtons() {
     const playButtons = document.querySelectorAll('button.player');
 
     playButtons.forEach(button => {
@@ -24,7 +32,7 @@ function enablePlayerButtons(){
     });
 }
 
-function enablePlayerIcons(){
+function enablePlayerIcons() {
     const icons = document.querySelectorAll('.player i');
 
     icons.forEach(icon => {
@@ -32,7 +40,7 @@ function enablePlayerIcons(){
     });
 }
 
-function enablePlayerScore(){
+function enablePlayerScore() {
     const scoreDivs = document.querySelectorAll('.score.player');
 
     scoreDivs.forEach(scoreDiv => {
@@ -46,7 +54,7 @@ function enablePlayerSide() {
     enablePlayerScore();
 }
 
-function enableComputerButtons(){
+function enableComputerButtons() {
     const playButtons = document.querySelectorAll('button.computer');
 
     playButtons.forEach(button => {
@@ -55,7 +63,7 @@ function enableComputerButtons(){
     });
 }
 
-function enableComputerIcons(){
+function enableComputerIcons() {
     const icons = document.querySelectorAll('.computer i');
 
     icons.forEach(icon => {
@@ -63,7 +71,7 @@ function enableComputerIcons(){
     });
 }
 
-function enableComputerScore(){
+function enableComputerScore() {
     const scoreDivs = document.querySelectorAll('.score.computer');
 
     scoreDivs.forEach(scoreDiv => {
@@ -98,7 +106,7 @@ function disableIcons() {
     });
 }
 
-function removePlayAgainOption (gameSessionDetails, playAgainDiv) {
+function removePlayAgainOption(gameSessionDetails, playAgainDiv) {
     gameSessionDetails.removeChild(playAgainDiv);
 }
 
@@ -153,8 +161,8 @@ function playRound(playerSelection, computerSelection) {
     }
 
     playerWins = (playerSelection === "rock" && computerSelection === "scissors")
-    || (playerSelection === "scissors" && computerSelection === "paper")
-    || (playerSelection === "paper" && computerSelection === "rock");
+        || (playerSelection === "scissors" && computerSelection === "paper")
+        || (playerSelection === "paper" && computerSelection === "rock");
 
     // cover player win cases
     if (playerWins) {
@@ -165,8 +173,8 @@ function playRound(playerSelection, computerSelection) {
     }
 
     playerLoses = (playerSelection === "paper" && computerSelection === "scissors")
-    || (playerSelection === "rock" && computerSelection === "paper")
-    || (playerSelection === "scissors" && computerSelection === "rock");
+        || (playerSelection === "rock" && computerSelection === "paper")
+        || (playerSelection === "scissors" && computerSelection === "rock");
     // cover player loss cases
     if (playerLoses) {
         computerWinCount++;
@@ -224,11 +232,7 @@ function playGame(e) {
     }
 }
 
-const playButtons = document.querySelectorAll('button.play-option.player');
-
-playButtons.forEach(button => {
-    button.addEventListener('click', playGame);
-});
+addPlayerButtonsEventListeners();
 
 
 
