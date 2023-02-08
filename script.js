@@ -20,6 +20,7 @@ function addPlayerButtonsClickListeners() {
 
     playButtons.forEach(button => {
         button.addEventListener('click', playRound);
+        button.addEventListener('click', () => button.classList.add('clicked'));
     });
 }
 
@@ -27,8 +28,9 @@ function addPlayerButtonsHoverListeners() {
     const playButtons = document.querySelectorAll('button.play-option.player');
 
     playButtons.forEach(button => {
-        button.addEventListener('mouseover', button.classList.add('hover'));
-        button.addEventListener('mouseout', button.classList.remove('hover'));
+        // Event listeners only accept function expressions to execute or trigger later when event happens not to trigger immediately and return result
+        button.addEventListener('mouseover', () => button.classList.add('hover'));
+        button.addEventListener('mouseout', () => button.classList.remove('hover'));
     });
 }
 
