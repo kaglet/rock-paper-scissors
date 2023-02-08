@@ -19,8 +19,10 @@ function addPlayerButtonsClickListeners() {
     const playButtons = document.querySelectorAll('button.play-option.player');
 
     playButtons.forEach(button => {
+        // Add clicked class before removing it
+        // Note we can remove clicked class later instead of removing event to remove element effects at least
+        button.addEventListener('click', () => button.classList.add('clicked'));
         button.addEventListener('click', playRound);
-        button.addEventListener('click', () => button.classList.add('clicked')); // We can remove clicked class later instead of removing event to remove element effects at least
     });
 }
 
@@ -218,6 +220,8 @@ function endGame() {
 
 // My priority is to keep the main flow of the round to this function, true to its name of course. 
 function playRound(e) {
+    // Disallow user selection while round is being played.
+
     let playerSelection = "";
     switch (true) {
         case e.target.classList.contains("rock"):
@@ -238,20 +242,31 @@ function playRound(e) {
 
     // Telegraph computer choice with same styles as user except automatic, in order
     // Get computer button
-    const chosenComputerButton = document.querySelector(`button.computer.${computerSelection}`);
-
+    const chosenComputerButton = document.querySelector(`button.computer.${computerSelection}`);;
     // Add clicked class
     chosenComputerButton.classList.add('clicked');
-
     // Add hover class
     chosenComputerButton.classList.add('hover');
 
-    const roundResultsDiv = document.querySelector('div.round-result');
-    roundResultsDiv.textContent = determineWinner(playerSelection, computerSelection);
+    // Play round only after computer hover transform scale size up transition ends
+    chosenComputerButton.addEventListener('transitionend', (e) => {
+        console.log(e);
 
-    if (playerWinCount === 5 || computerWinCount === 5) {
-        endGame();
-    }
+        const roundResultsDiv = document.querySelector('div.round-result');
+        roundResultsDiv.textContent = determineWinner(playerSelection, computerSelection);
+
+        // Remove all stalled effects for round, both player and computer
+        chosenComputerButton.classList.remove('hover');
+        chosenComputerButton.classList.remove('clicked');
+
+        // Remove active styling classes for individual player button
+        const chosenPlayerButton = document.querySelector(`button.player.${playerSelection}`);;
+        chosenPlayerButton.classList.remove('clicked');
+
+        if (playerWinCount === 5 || computerWinCount === 5) {
+            endGame();
+        }
+    }, { once: true });
 }
 
 addPlayerButtonsHoverListeners();

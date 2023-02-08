@@ -159,6 +159,14 @@ i.greyed-out, .score.greyed-out {
     box-shadow: 0 0 10px rgb(226, 160, 29);
 }
 
+.right-aligned > button.hover {
+    transform: scale(1.1);
+}
+
+.right-aligned > button.clicked {
+    box-shadow: 0 0 10px rgb(77, 142, 189);
+}
+
 /* Black, peach, plum red, white, metal grey is my color palette. */
 
 /* Checklist of wants:
