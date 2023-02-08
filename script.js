@@ -1,6 +1,4 @@
 let playerWinCount = 0, computerWinCount = 0;
-let controllerAddClicked;
-let controllerAddHover;
 
 function printGameResults() {
     const gameResultsDiv = document.querySelector('div.game-result');
@@ -20,11 +18,10 @@ function printGameResults() {
 function addPlayerButtonsClickListeners() {
     const playButtons = document.querySelectorAll('button.play-option.player');
 
-    controllerAddClicked = new AbortController();
     playButtons.forEach(button => {
         // Add clicked class before removing it
         // Note we can remove clicked class later instead of removing event to remove element effects at least
-        button.addEventListener('click', () => button.classList.add('clicked'), {signal: controllerAddClicked.signal});
+        button.addEventListener('click', button.fnAddClicked = () => button.classList.add('clicked'), false);
         button.addEventListener('click', playRound);
     });
 }
@@ -32,10 +29,9 @@ function addPlayerButtonsClickListeners() {
 function addPlayerButtonsHoverListeners() {
     const playButtons = document.querySelectorAll('button.play-option.player');
 
-    controllerAddHover = new AbortController();
     playButtons.forEach(button => {
         // Event listeners only accept function expressions to execute or trigger later when event happens not to trigger immediately and return result
-        button.addEventListener('mouseover', () => button.classList.add('hover'), {signal: controllerAddHover.signal});
+        button.addEventListener('mouseover', button.fnAddHover = () => button.classList.add('hover'), false);
         button.addEventListener('mouseout', () => button.classList.remove('hover'));
     });
 }
@@ -108,10 +104,8 @@ function disableIcons() {
 
     playButtons.forEach(button => {
         button.removeEventListener('click', playRound);
-        controllerAddClicked.abort();
-        controllerAddHover.abort();
-        // button.removeEventListener('mouseover', button.fnAddHover, false);
-        // button.removeEventListener('click', button.fnAddClicked, false);
+        button.removeEventListener('mouseover', button.fnAddHover, false);
+        button.removeEventListener('click', button.fnAddClicked, false);
         button.classList.toggle("greyed-out");
     });
 
