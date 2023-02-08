@@ -20,7 +20,7 @@ function addPlayerButtonsClickListeners() {
 
     playButtons.forEach(button => {
         button.addEventListener('click', playRound);
-        button.addEventListener('click', () => button.classList.add('clicked'));
+        button.addEventListener('click', () => button.classList.add('clicked')); // We can remove clicked class later instead of removing event to remove element effects at least
     });
 }
 
@@ -218,7 +218,6 @@ function endGame() {
 
 // My priority is to keep the main flow of the round to this function, true to its name of course. 
 function playRound(e) {
-    e.target.classList.add('clicked');
     let playerSelection = "";
     switch (true) {
         case e.target.classList.contains("rock"):
@@ -236,6 +235,16 @@ function playRound(e) {
     }
 
     let computerSelection = getComputerChoice();
+
+    // Telegraph computer choice with same styles as user except automatic, in order
+    // Get computer button
+    const chosenComputerButton = document.querySelector(`button.computer.${computerSelection}`);
+
+    // Add clicked class
+    chosenComputerButton.classList.add('clicked');
+
+    // Add hover class
+    chosenComputerButton.classList.add('hover');
 
     const roundResultsDiv = document.querySelector('div.round-result');
     roundResultsDiv.textContent = determineWinner(playerSelection, computerSelection);
