@@ -259,7 +259,6 @@ function playRound(e) {
 
     // Play round only after computer hover transform scale size up transition ends
     chosenComputerButton.addEventListener('transitionend', (e) => {
-        console.log(e);
 
         const roundResultsDiv = document.querySelector('div.round-result');
         roundResultsDiv.textContent = determineWinner(playerSelection, computerSelection);
@@ -275,6 +274,7 @@ function playRound(e) {
         if (playerWinCount === 5 || computerWinCount === 5) {
             endGame();
         }
+        
     }, { once: true });
 }
 
