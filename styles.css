@@ -15,7 +15,7 @@ body {
 .main-container {
     display: flex;
     gap: 20px;
-    padding: 90px 150px 40px;
+    padding: 65px 150px 40px;
     justify-content: space-between;
 }
 
@@ -156,7 +156,7 @@ i.greyed-out, .score.greyed-out {
 }
 
 .left-aligned > button.clicked {
-    box-shadow: 0 0 10px rgb(226, 160, 29);
+    box-shadow: 0 0 10px 2px rgb(226, 160, 29);
 }
 
 .right-aligned > button.hover {
@@ -164,7 +164,7 @@ i.greyed-out, .score.greyed-out {
 }
 
 .right-aligned > button.clicked {
-    box-shadow: 0 0 10px rgb(77, 142, 189);
+    box-shadow: 0 0 10px 2px rgb(77, 142, 189);
 }
 
 /* Black, peach, plum red, white, metal grey is my color palette. */
