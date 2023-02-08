@@ -274,7 +274,7 @@ function playRound(e) {
         if (playerWinCount === 5 || computerWinCount === 5) {
             endGame();
         }
-        
+
     }, { once: true });
 }
 
