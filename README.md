@@ -26,7 +26,7 @@ Find the live preview [here](kaglet.github.io/rock-paper-scissors).
 - [Font Awesome](https://fontawesome.com/)
 - [Google Fonts](https://fonts.google.com/)
 
-### Miscellaneous, but vital resources
+### Miscellaneous, Important Resources
 
 ####  Removing event listeners on anonymous functions
 
