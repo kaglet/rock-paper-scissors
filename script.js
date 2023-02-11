@@ -275,29 +275,3 @@ addPlayerButtonsClickListeners();
 
 
 
-/* TO-DO:
-    On click use target's attribute to tell if its scissor, rock, or paper.
-
-    Update scores with each round. ✔
-    Display round counter. 
-    When game is done grey the icons out and disable clicking ability. ✔
-    Retry resets scores, returns color and functionality. Need to code to restart the stack frame somehow.
-    Not keep going.
-    Update win and lose comments.
-
-    Add animation to game description.
-    Add rolling in animation to game choices.
-    Add play again option with a retry or reload icon. ✔
-        - Do not allow play again to shift other content up.
-    Add glow on hover and enlarge animation when clicked.
-    Add glow around winner icon if they win.
-    On hover over retry icon, change mouse cursor type to the hand, and enlarge play again on hover. 
-
-    Watch video about bubbling and propagation for onClick() event.
-*/
-
-/* ISSUES:
-The div as auto-sized to fit to content. 
-
-*/
-

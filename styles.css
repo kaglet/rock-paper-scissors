@@ -171,21 +171,4 @@ i.greyed-out, .score.greyed-out {
     transform: scale(1.3);
 }
 
-/* Black, peach, plum red, white, metal grey is my color palette. */
-
-/* Checklist of wants:
-
-- Add nice font to round/game comment.  ✔
-- More rounded edges, with unique borders and trims, fancy fonts, color to the page.  ✔
-- Color palette ideas:
-    - Plum red, metallic blue, wheat yellow, white.  
-- I want the header to stretch to fill the entire inline space but for the content to be centered  ✔
-    - Either wrap it in a div or just use text-align  ✔
-- Add titles: You, computer. 
-- Add round counter and restart option. 
-- Increase font size slightly, play around with spacing, change styles to sans serif.  ✔
-- Give text and icons some texture, like a glint or metallic feel.
-- Give some dimensions to elements to not make them feel flat.
-*/
-
 
