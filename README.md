@@ -4,7 +4,7 @@
 
 An interactive rock paper scissors game between a user and the computer, as part of [The Odin Project](https://www.theodinproject.com) curriculum.   
 
-Find the live preview [here](kaglet.github.io/rock-paper-scissors).
+Find the live preview [here](https://kaglet.github.io/rock-paper-scissors/).
 
 ## Technologies   
 
