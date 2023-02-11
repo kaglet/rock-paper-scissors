@@ -38,3 +38,4 @@ Find the live preview [here](kaglet.github.io/rock-paper-scissors).
 - Add small animation to game description, so the page is less static.  
 - Add metallic or similar texture that gives icons and fonts a glint, so they do not feel so plain.  
 - Learn how to add mobile support.
+- Add sound effects when interacting with game elements.
