@@ -39,3 +39,4 @@ Find the live preview [here](https://kaglet.github.io/rock-paper-scissors/).
 - Add metallic or similar texture that gives icons and fonts a glint, so they do not feel so plain.  
 - Learn how to add mobile support.
 - Add sound effects when interacting with game elements.
+- Add number of rounds counter.
