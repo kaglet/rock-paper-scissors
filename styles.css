@@ -2,8 +2,16 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    background-color: hsl(0, 0%, 0%);
-    color: whitesmoke;
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";;
+}
+
+:root {
+    --main-bg-color: orange;
+    --panel-color: grey;
+    --player-color: blue;
+    --bot-color: red;
+    --title-color: green;
+    --main-font: "Amiko", serif;
 }
 
 body {
@@ -15,26 +23,19 @@ body {
 .main-container {
     display: flex;
     gap: 20px;
-    padding: 65px 150px 40px;
     justify-content: space-between;
 }
 
-.button-container {
+.play-option-container {
     display: flex;
     flex-direction: column;
-}
-
-.mini-container > div {
-    margin-top: 20px;
-    font-size: 20px;
-    font-weight: 600;
 }
 
 button {
     margin: 20px;
     width: 120px;
     height: 120px;
-    background-color: hsla(120, 100%, 100%, 0);
+    background-color: transparent;
     border-radius: 10px;
     transition: transform 0.3s;
 }
@@ -43,61 +44,22 @@ h1 {
     font-size: 80px;
     flex-grow: 1;
     text-align: center;
+    margin: auto;
     text-transform: uppercase;
-    padding: 60px 0px;
-    color: rgb(238, 70, 70);
-    border-bottom: 2px dashed #A8A9AD;
-    font-family: "Rakkas", sans-serif; 
+    color: var(--title-color);
+    width: min-content; 
+    line-height: 70px;
 }
 
 p {
     font-size: 32px;  
-    margin: 10px auto 10px auto;
+    margin: auto;
     font-weight: 600;
     font-family: "Amiko", serif; 
 }
 
-img {
-    width: 200px;
-    height: 200px;
-}
-
-.round-result, .game-result {
-    width: 500px;
-    height: 100px;
-    font-size: 25px;
-    border-radius: 10px;
-    border: 2px solid azure;
-    background-color: azure;
-    color: black;
-    /*for text alignment*/
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-family: "Amiko", serif; 
-    /*position self*/
-    align-self: center;
-}
-
 i {
     font-size: 80px;
-}
-
-.left-aligned i, .score.player {
-    color: rgb(226, 160, 29);
-}
-
-.left-aligned button, .left-aligned div {
-    border: 2px dashed rgb(226, 160, 29); 
-}
-
-.right-aligned i, .score.computer {
-    color: rgb(77, 142, 189);
-}
-
-.right-aligned button, .right-aligned div {
-    border: 2px dashed rgb(77, 142, 189); 
 }
 
 .player > i {
@@ -108,25 +70,25 @@ i {
     font-family: "Amiko", serif; 
 }
 
-.footer i {
+footer i {
     font-size: 30px;
 }
 
 
-div.footer {
+footer {
     display: flex;
     flex-grow: 1;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    font-family: "Amiko", serif; 
+    font-family: var(--main-font); 
 }
 
-div .play-again i {
+section .play-again i {
     font-size: 20px;
 }
 
-div .play-again {
+section .play-again {
     align-self: center;
     margin-top: 40px;
     font-family: "Amiko", serif; 
@@ -152,20 +114,8 @@ i.greyed-out, .score.greyed-out {
     color: #A8A9AD;
 }
 
-.left-aligned > button.hover {
+button.hover {
     transform: scale(1.1);
-}
-
-.left-aligned > button.clicked {
-    box-shadow: 0 0 10px 2px rgb(226, 160, 29);
-}
-
-.right-aligned > button.hover {
-    transform: scale(1.1);
-}
-
-.right-aligned > button.clicked {
-    box-shadow: 0 0 10px 2px rgb(77, 142, 189);
 }
 
 .fa-solid.fa-rotate-right:hover, .fa-solid.fa-rotate-right:focus {

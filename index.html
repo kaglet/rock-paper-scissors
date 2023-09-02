@@ -17,45 +17,44 @@
 </head>
 
 <body>
-    <h1>Rock, Paper, Scissors</h1>
+    <h1>Rock Paper Scissors</h1>
     <p> Duel with the computer. First to 5 wins. </p>
 
-    <div class="main-container">
-        <div class="mini-container">
-            <div class="left-aligned player icon">
-                <i class="fa-solid fa-user"></i>
-            </div>
-            <div class="score player">Score: 0</div>
-        </div>
+    <section class="main-container">
+        <section class="player panel">
+            <section class="mini-container">
+                <section class="left-aligned player icon">
+                    <i class="fa-solid fa-user"></i>
+                </section>
+                <section class="score player">Score: 0</section>
+            </section>
+    
+            <section class="play-option-container left-aligned">
+                <button class="play-option player rock"><i class="fa-solid fa-hand-back-fist rock"></i></button>
+                <button class="play-option player paper"><i class="fa-solid fa-hand paper"></i></button>
+                <button class="play-option player scissors"><i class="fa-solid fa-hand-scissors scissors"></i></button>
+            </section>
+        </section>
+        <section class="computer panel">
+            <section class="play-option-container right-aligned">
+                <button class="play-option computer rock"><i class="fa-solid fa-hand-back-fist rock"></i></button>
+                <button class="play-option computer paper"><i class="fa-solid fa-hand paper"></i></button>
+                <button class="play-option computer scissors"><i class="fa-solid fa-hand-scissors scissors"></i></button>
+            </section>
+    
+            <section class="mini-container">
+                <section class="right-aligned computer icon">
+                    <i class="fa-solid fa-robot"></i>
+                </section>
+                <section class="score computer">Score: 0</section>
+            </section>
+        </section>
+    </section>
 
-        <div class="button-container left-aligned">
-            <button class="play-option player rock"><i class="fa-solid fa-hand-back-fist rock"></i></button>
-            <button class="play-option player paper"><i class="fa-solid fa-hand paper"></i></button>
-            <button class="play-option player scissors"><i class="fa-solid fa-hand-scissors scissors"></i></button>
-        </div>
-
-        <div class="game-session-details">
-            <div class="round-result game-result"></div>
-        </div>
-
-        <div class="button-container right-aligned">
-            <button class="play-option computer rock"><i class="fa-solid fa-hand-back-fist rock"></i></button>
-            <button class="play-option computer paper"><i class="fa-solid fa-hand paper"></i></button>
-            <button class="play-option computer scissors"><i class="fa-solid fa-hand-scissors scissors"></i></button>
-        </div>
-
-        <div class="mini-container">
-            <div class="right-aligned computer icon">
-                <i class="fa-solid fa-robot"></i>
-            </div>
-            <div class="score computer">Score: 0</div>
-        </div>
-    </div>
-
-    <div class="footer">
+    <footer>
         Copyright © 2023 kaglet 
         <a href="https://github.com/kaglet/rock-paper-scissors"> <i class="fa-brands fa-github"> </i></a>
-    </div>
+    </footer>
 
 </body>
 

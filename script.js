@@ -1,14 +1,14 @@
 let playerWinCount = 0, computerWinCount = 0;
 
 function printGameResults() {
-    const gameResultsDiv = document.querySelector('div.game-result');
+    const gameResultsSection = document.querySelector('section.game-result');
     const body = document.querySelector('body');
 
     if (playerWinCount > computerWinCount) {
-        gameResultsDiv.textContent = "Congrats! You're a winner, for once :).";
+        gameResultsSection .textContent = "Congrats! You're a winner, for once :).";
     }
     else {
-        gameResultsDiv.textContent = "You lose! Not a good look :o.";
+        gameResultsSection .textContent = "You lose! Not a good look :o.";
     }
 }
 
@@ -53,10 +53,10 @@ function enablePlayerIcons() {
 }
 
 function enablePlayerScore() {
-    const scoreDivs = document.querySelectorAll('.score.player');
+    const scoreSections = document.querySelectorAll('.score.player');
 
-    scoreDivs.forEach(scoreDiv => {
-        scoreDiv.classList.remove("greyed-out");
+    scoreSections.forEach(scoreSection => {
+        scoreSection.classList.remove("greyed-out");
     });
 }
 
@@ -83,10 +83,10 @@ function enableComputerIcons() {
 }
 
 function enableComputerScore() {
-    const scoreDivs = document.querySelectorAll('.score.computer');
+    const scoreSections = document.querySelectorAll('.score.computer');
 
-    scoreDivs.forEach(scoreDiv => {
-        scoreDiv.classList.remove("greyed-out");
+    scoreSections.forEach(scoreSection => {
+        scoreSection.classList.remove("greyed-out");
     });
 }
 
@@ -112,51 +112,51 @@ function disableIcons() {
         icon.classList.toggle("greyed-out");
     });
 
-    const scoreDivs = document.querySelectorAll('.score');
+    const scoreSections = document.querySelectorAll('.score');
 
-    scoreDivs.forEach(scoreDiv => {
-        scoreDiv.classList.toggle("greyed-out");
+    scoreSections.forEach(scoreSection => {
+        scoreSection.classList.toggle("greyed-out");
     });
 }
 
-function removePlayAgainOption(gameSessionDetails, playAgainDiv) {
-    gameSessionDetails.removeChild(playAgainDiv);
+function removePlayAgainOption(gameSessionDetails, playAgainSection) {
+    gameSessionDetails.removeChild(playAgainSection);
 }
 
 function removeGameResultsText() {
-    const roundResultsDiv = document.querySelector('div.round-result');
-    roundResultsDiv.textContent = "";
+    const roundResultsSection = document.querySelector('section.round-result');
+    roundResultsSection.textContent = "";
 }
 
 function addPlayAgainOption() {
-    const playAgainDiv = document.createElement('div');
+    const playAgainSection = document.createElement('section');
     const retryIcon = document.createElement('i');
     const gameSessionDetails = document.querySelector('.game-session-details');
 
-    playAgainDiv.textContent = `Play again? `;
-    playAgainDiv.classList.add('play-again');
+    playAgainSection.textContent = `Play again? `;
+    playAgainSection.classList.add('play-again');
 
     retryIcon.classList.add('fa-solid');
     retryIcon.classList.add('fa-rotate-right');
 
-    playAgainDiv.appendChild(retryIcon);
-    gameSessionDetails.appendChild(playAgainDiv);
+    playAgainSection.appendChild(retryIcon);
+    gameSessionDetails.appendChild(playAgainSection);
 
     retryIcon.addEventListener('click', () => {
         enablePlayerSide();
         enableComputerSide();
-        removePlayAgainOption(gameSessionDetails, playAgainDiv);
+        removePlayAgainOption(gameSessionDetails, playAgainSection);
         showScores();
         removeGameResultsText();
     });
 }
 
 function showScores() {
-    const computerScoreDiv = document.querySelector('.score.computer');
-    const playerScoreDiv = document.querySelector('.score.player');
+    const computerScoreSection = document.querySelector('.score.computer');
+    const playerScoreSection = document.querySelector('.score.player');
 
-    computerScoreDiv.textContent = `Score: ${computerWinCount}`;
-    playerScoreDiv.textContent = `Score: ${playerWinCount}`;
+    computerScoreSection.textContent = `Score: ${computerWinCount}`;
+    playerScoreSection.textContent = `Score: ${playerWinCount}`;
 }
 
 function getRandomInt(min, max) {
@@ -251,8 +251,8 @@ function playRound(e) {
     // Play round only after computer hover transform scale size up transition ends
     chosenComputerButton.addEventListener('transitionend', (e) => {
 
-        const roundResultsDiv = document.querySelector('div.round-result');
-        roundResultsDiv.textContent = determineWinner(playerSelection, computerSelection);
+        const roundResultsSection = document.querySelector('section.round-result');
+        roundResultsSection.textContent = determineWinner(playerSelection, computerSelection);
 
         // Remove all stalled effects for round, both player and computer
         chosenComputerButton.classList.remove('hover');
