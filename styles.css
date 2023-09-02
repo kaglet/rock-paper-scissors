@@ -17,18 +17,35 @@
 body {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
+    height: 100vh;
+}
+
+section p {
+    font-size: 70px;
+    margin: auto 0;
 }
 
 .main-container {
     display: flex;
-    gap: 20px;
-    justify-content: space-between;
+    gap: 200px;
+    justify-content: center;
 }
 
-.play-option-container {
+.moves-container {
     display: flex;
     flex-direction: column;
+}
+
+.panel {
+    display: flex;
+    gap: 20px;
+    background-color: var(--panel-color);
+    padding: 20px;
+}
+
+.computer.panel {
+    flex-direction: row-reverse;
 }
 
 button {
@@ -41,7 +58,7 @@ button {
 }
 
 h1 {
-    font-size: 80px;
+    font-size: 60px;
     flex-grow: 1;
     text-align: center;
     margin: auto;
@@ -51,8 +68,8 @@ h1 {
     line-height: 70px;
 }
 
-p {
-    font-size: 32px;  
+h1 + p {
+    font-size: 26px;  
     margin: auto;
     font-weight: 600;
     font-family: "Amiko", serif; 
@@ -84,10 +101,6 @@ footer {
     font-family: var(--main-font); 
 }
 
-section .play-again i {
-    font-size: 20px;
-}
-
 section .play-again {
     align-self: center;
     margin-top: 40px;
@@ -95,14 +108,11 @@ section .play-again {
     font-size: 25px;
 }
 
-.game-session-details {
-    display: flex;
-    flex-direction: column; 
-    flex-grow: 1;
-    justify-content: center;
+section .play-again i {
+    font-size: 20px;
 }
 
-.mini-container {
+.frame {
     align-self: center;
 }
 
