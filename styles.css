@@ -7,7 +7,7 @@
 
 :root {
     --main-bg-color: rgb(9, 9, 9);
-    --panel-color: #313638;
+    --panel-color: #0f1111;
     --player-color: #D62246;
     --bot-color: #7F95D1;
     --title-color: var(--main-bg-color);
@@ -26,31 +26,38 @@ body {
 section p {
     font-size: 70px;
     margin: auto 0;
+    padding: 0px 100px;
+}
+
+.player.panel + p {
+    background: linear-gradient(to right,var(--player-color), var(--bot-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.score {
+    font-size: 40px;
 }
 
 .main-container {
     display: flex;
-    gap: 200px;
-    justify-content: center;
+    flex: auto;
+    align-items: center;
+    padding: 0px 100px;
 }
 
 .moves-container {
     display: flex;
-    flex-direction: column;
 }
 
 .panel {
     display: flex;
+    flex-direction: column;
     gap: 20px;
     padding: 30px;
-}
-
-.panel, button {
-    border-radius: 30px;
-}
-
-.computer.panel {
-    flex-direction: row-reverse;
+    flex: auto;
+    align-items: center;
+    /* border-radius: 15px; */
 }
 
 button {
@@ -58,6 +65,7 @@ button {
     width: 120px;
     height: 120px;
     transition: transform 0.3s;
+    border-style: none;
 }
 
 h1 {
@@ -69,6 +77,9 @@ h1 {
     color: var(--title-color);
     width: min-content; 
     line-height: 70px;
+    background: linear-gradient(to right,var(--player-color), var(--bot-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 h1 + p {
@@ -76,6 +87,7 @@ h1 + p {
     margin: auto;
     font-weight: 600;
     font-family: "Amiko", serif; 
+    flex: 0;
 }
 
 i {
@@ -97,11 +109,13 @@ footer i {
 
 footer {
     display: flex;
-    flex-grow: 1;
     justify-content: center;
     align-items: center;
     gap: 10px;
     font-family: var(--main-font); 
+    background: linear-gradient(to right,var(--player-color), var(--bot-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 section .play-again {
@@ -145,11 +159,36 @@ body {
     background-color: var(--main-bg-color);
 }
 
-header {
-    background-image: linear-gradient(to right, var(--player-color) , var(--bot-color));
-}
-
 .panel {
     background-color: var(--panel-color);
 }
 
+button {
+    background-color: transparent;
+}
+
+.player.panel {
+    color: var(--player-color);
+}
+
+.computer.panel {
+    color: var(--bot-color);
+}
+
+.player.play-option {
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: var(--player-color);
+}
+
+.computer.play-option {
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: var(--bot-color);
+}
+
+/* .player.panel {
+    border: 0.1rem solid var(--player-color);
+}
+
+.computer.panel {
+    border: 0.1rem solid var(--bot-color);
+} */
