@@ -88,14 +88,6 @@ function getComputerChoice() {
     }
 };
 
-function endGame() {
-    printGameResults();
-
-    // Reset win counts
-    playerScore = 0;
-    computerScore = 0;
-}
-
 // My priority is to keep the main flow of the round to this function, true to its name of course. 
 function playRound(e) {
     // Disallow user selection while round is being played.
@@ -134,8 +126,13 @@ function playRound(e) {
     chosenComputerButton.classList.remove('hover');
     chosenComputerButton.classList.remove(' click');
 
+    // end game can be explicit instead of a function as it is vague
     if (playerScore === 5 || computerScore === 5) {
-        endGame();
+        printGameResults();
+
+        // Reset win counts
+        playerScore = 0;
+        computerScore = 0;
     }
 }
 
