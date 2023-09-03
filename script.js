@@ -13,6 +13,7 @@ function printGameResults() {
     }
 }
 
+//
 function addPlayerButtonsClickListeners() {
     const playButtons = document.querySelectorAll('button.play-option.player');
 
@@ -21,16 +22,6 @@ function addPlayerButtonsClickListeners() {
         // Note we can remove clicked class later instead of removing event to remove element effects at least
         button.addEventListener('click', button.fnAddClicked = () => button.classList.add('clicked'), false);
         button.addEventListener('click', playRound);
-    });
-}
-
-function addPlayerButtonsHoverListeners() {
-    const playButtons = document.querySelectorAll('button.play-option.player');
-
-    playButtons.forEach(button => {
-        // Event listeners only accept function expressions to execute or trigger later when event happens not to trigger immediately and return result
-        button.addEventListener('mouseover', button.fnAddHover = () => button.classList.add('hover'), false);
-        button.addEventListener('mouseout', () => button.classList.remove('hover'));
     });
 }
 
@@ -270,7 +261,6 @@ function playRound(e) {
     }, { once: true });
 }
 
-addPlayerButtonsHoverListeners();
 addPlayerButtonsClickListeners();
 
 
