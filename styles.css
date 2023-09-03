@@ -9,9 +9,9 @@
     --main-bg-color: rgb(9, 9, 9);
     --panel-color: #0f1111;
     --player-color: #D62246;
-    --player-color-glow: #ef4365;
+    --player-color-glow: #D62246;
     --bot-color: #7F95D1;
-    --bot-color-glow: #a1b2e2;
+    --bot-color-glow: #7F95D1;
     --title-color: var(--main-bg-color);
     --main-font: "Amiko", serif;
     --footer-color: lightblue;

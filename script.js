@@ -1,14 +1,15 @@
 let playerWinCount = 0, computerWinCount = 0;
 
+// this will show dialogue box instead
 function printGameResults() {
     const gameResultsSection = document.querySelector('section.game-result');
     const body = document.querySelector('body');
 
     if (playerWinCount > computerWinCount) {
-        gameResultsSection .textContent = "Congrats! You're a winner, for once :).";
+        gameResultsSection.textContent = "Congrats! You're a winner, for once :).";
     }
     else {
-        gameResultsSection .textContent = "You lose! Not a good look :o.";
+        gameResultsSection.textContent = "You lose! Not a good look :o.";
     }
 }
 
