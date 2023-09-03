@@ -1,11 +1,10 @@
-let playerWinCount = 0, computerWinCount = 0;
+let playerScore = 0, computerScore = 0;
 
 // this will show dialogue box instead
 function printGameResults() {
     const gameResultsSection = document.querySelector('section.game-result');
-    const body = document.querySelector('body');
 
-    if (playerWinCount > computerWinCount) {
+    if (playerScore > computerScore) {
         gameResultsSection.textContent = "Congrats! You're a winner, for once :).";
     }
     else {
@@ -13,11 +12,7 @@ function printGameResults() {
     }
 }
 
-// this will simply reset scores
-function resetScores() {
-    
-}
-
+// this will show dialogue box instead with retry icon used
 function addPlayAgainOption() {
     const playAgainSection = document.createElement('section');
     const retryIcon = document.createElement('i');
@@ -31,34 +26,25 @@ function addPlayAgainOption() {
 
     playAgainSection.appendChild(retryIcon);
     gameSessionDetails.appendChild(playAgainSection);
+}
 
-    retryIcon.addEventListener('click', () => {
-        enablePlayerSide();
-        enableComputerSide();
-        removePlayAgainOption(gameSessionDetails, playAgainSection);
-        showScores();
-        removeGameResultsText();
-    });
+// this will simply reset scores
+function resetScores() {
+    
 }
 
 function showScores() {
     const computerScoreSection = document.querySelector('.score.computer');
     const playerScoreSection = document.querySelector('.score.player');
 
-    computerScoreSection.textContent = `Score: ${computerWinCount}`;
-    playerScoreSection.textContent = `Score: ${playerWinCount}`;
-}
-
-function getRandomInt(min, max) {
-    let randomNumber = Math.floor(Math.random() * (max - min) + min);
-    return randomNumber;
+    computerScoreSection.textContent = `Score: ${computerScore}`;
+    playerScoreSection.textContent = `Score: ${playerScore}`;
 }
 
 function determineWinner(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
 
-    // if player and computer play the same then output draw
     if (playerSelection === computerSelection) {
         return `Draw! Both played ${playerSelection}`;
     }
@@ -69,7 +55,7 @@ function determineWinner(playerSelection, computerSelection) {
 
     // cover player win cases
     if (playerWins) {
-        playerWinCount++;
+        playerScore++;
         showScores();
         playerSelection = playerSelection.replace(playerSelection[0], playerSelection[0].toUpperCase());
         return `You win! ${playerSelection} beats ${computerSelection}.`;
@@ -80,11 +66,16 @@ function determineWinner(playerSelection, computerSelection) {
         || (playerSelection === "scissors" && computerSelection === "rock");
     // cover player loss cases
     if (playerLoses) {
-        computerWinCount++;
+        computerScore++;
         showScores();
         computerSelection = computerSelection.replace(computerSelection[0], computerSelection[0].toUpperCase());
         return `You lose! ${computerSelection} beats ${playerSelection}.`;
     }
+}
+
+function getRandomInt(min, max) {
+    let randomNumber = Math.floor(Math.random() * (max - min) + min);
+    return randomNumber;
 }
 
 function getComputerChoice() {
@@ -101,11 +92,8 @@ function endGame() {
     printGameResults();
 
     // Reset win counts
-    playerWinCount = 0;
-    computerWinCount = 0;
-
-    addPlayAgainOption();
-    disableIcons();
+    playerScore = 0;
+    computerScore = 0;
 }
 
 // My priority is to keep the main flow of the round to this function, true to its name of course. 
@@ -133,30 +121,22 @@ function playRound(e) {
     // Telegraph computer choice with same styles as user except automatic, in order
     // Get computer button
     const chosenComputerButton = document.querySelector(`button.computer.${computerSelection}`);;
-    // Add clicked class
-    chosenComputerButton.classList.add('clicked');
+    // Add period where user can't spam click either
+    // TO DO: Add delay for effects before winner is determined
+
+    // Add  click class
+    chosenComputerButton.classList.add(' click');
     // Add hover class
     chosenComputerButton.classList.add('hover');
 
-    // Play round only after computer hover transform scale size up transition ends
-    chosenComputerButton.addEventListener('transitionend', (e) => {
+    determineWinner(playerSelection, computerSelection);
 
-        const roundResultsSection = document.querySelector('section.round-result');
-        roundResultsSection.textContent = determineWinner(playerSelection, computerSelection);
+    chosenComputerButton.classList.remove('hover');
+    chosenComputerButton.classList.remove(' click');
 
-        // Remove all stalled effects for round, both player and computer
-        chosenComputerButton.classList.remove('hover');
-        chosenComputerButton.classList.remove('clicked');
-
-        // Remove active styling classes for individual player button
-        const chosenPlayerButton = document.querySelector(`button.player.${playerSelection}`);;
-        chosenPlayerButton.classList.remove('clicked');
-
-        if (playerWinCount === 5 || computerWinCount === 5) {
-            endGame();
-        }
-
-    }, { once: true });
+    if (playerScore === 5 || computerScore === 5) {
+        endGame();
+    }
 }
 
 const playButtons = document.querySelectorAll('button.play-option.player');
