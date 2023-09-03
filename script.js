@@ -28,11 +28,6 @@ function addPlayAgainOption() {
     gameSessionDetails.appendChild(playAgainSection);
 }
 
-// this will simply reset scores
-function resetScores() {
-    
-}
-
 function updateScores() {
     const computerScoreSection = document.querySelector('.score.computer');
     const playerScoreSection = document.querySelector('.score.player');
@@ -101,26 +96,29 @@ function playRound(e) {
 
     // Telegraph computer choice with same styles as user except automatic, in order
     // Get computer button
-    const chosenComputerButton = document.querySelector(`button.computer.${computerSelection}`);;
+    const chosenComputerButton = document.querySelector(`button.computer.${computerSelection} > i`);;
     // TO DO: Add period where user can't spam click either maybe via disabling although new click is fine, spam is processed (we'll test)
     // TO DO: Add delay for effects before winner is determined
 
     if (!(playerScore === 5 || computerScore === 5)){
-        // Add click class
-        chosenComputerButton.classList.add('click');
+        // Add active class
+        chosenComputerButton.classList.add('active');
         // Add hover class
-        chosenComputerButton.classList.add('hover');        
+        chosenComputerButton.classList.add('hover');
+
         determineWinner(playerSelection, computerSelection);
         updateScores();
     
         chosenComputerButton.classList.remove('hover');
-        chosenComputerButton.classList.remove('click');
+        chosenComputerButton.classList.remove('active');
     } else {
-        printGameResults();
+        // showEndGameDialog instead
+        // printGameResults();
 
         // Reset win counts
         playerScore = 0;
         computerScore = 0;
+        updateScores();
     }
 }
 

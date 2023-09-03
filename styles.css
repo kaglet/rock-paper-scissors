@@ -133,12 +133,12 @@ section .play-again i {
     align-items: center;
 }
 
-.player i.hover {
+.computer i.hover {
     position: relative;
     bottom: 10px;
 }
 
-.player i.active {
+.computer i.active {
     color: var(--bot-color-glow);
     text-shadow: 0px 0px 0.5px var(--bot-color-glow);
     -webkit-text-stroke-color: transparent;
