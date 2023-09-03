@@ -13,18 +13,6 @@ function printGameResults() {
     }
 }
 
-//
-function addPlayerButtonsClickListeners() {
-    const playButtons = document.querySelectorAll('button.play-option.player');
-
-    playButtons.forEach(button => {
-        // Add clicked class before removing it
-        // Note we can remove clicked class later instead of removing event to remove element effects at least
-        button.addEventListener('click', button.fnAddClicked = () => button.classList.add('clicked'), false);
-        button.addEventListener('click', playRound);
-    });
-}
-
 function enablePlayerButtons() {
     const playButtons = document.querySelectorAll('button.player');
 
@@ -261,7 +249,11 @@ function playRound(e) {
     }, { once: true });
 }
 
-addPlayerButtonsClickListeners();
+const playButtons = document.querySelectorAll('button.play-option.player');
+
+playButtons.forEach(button => {
+    button.addEventListener('click', playRound);
+});
 
 
 
