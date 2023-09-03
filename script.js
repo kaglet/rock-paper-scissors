@@ -13,90 +13,9 @@ function printGameResults() {
     }
 }
 
-function enablePlayerButtons() {
-    const playButtons = document.querySelectorAll('button.player');
-
-    playButtons.forEach(button => {
-        button.classList.remove("greyed-out");
-    });
+// this will simply reset scores
+function resetScores() {
     
-    addPlayerButtonsHoverListeners();
-    addPlayerButtonsClickListeners();
-}
-
-function enablePlayerIcons() {
-    const icons = document.querySelectorAll('.player i');
-
-    icons.forEach(icon => {
-        icon.classList.remove("greyed-out");
-    });
-}
-
-function enablePlayerScore() {
-    const scoreSections = document.querySelectorAll('.score.player');
-
-    scoreSections.forEach(scoreSection => {
-        scoreSection.classList.remove("greyed-out");
-    });
-}
-
-function enablePlayerSide() {
-    enablePlayerButtons();
-    enablePlayerIcons();
-    enablePlayerScore();
-}
-
-function enableComputerButtons() {
-    const playButtons = document.querySelectorAll('button.computer');
-
-    playButtons.forEach(button => {
-        button.classList.remove("greyed-out");
-    });
-}
-
-function enableComputerIcons() {
-    const icons = document.querySelectorAll('.computer i');
-
-    icons.forEach(icon => {
-        icon.classList.remove("greyed-out");
-    });
-}
-
-function enableComputerScore() {
-    const scoreSections = document.querySelectorAll('.score.computer');
-
-    scoreSections.forEach(scoreSection => {
-        scoreSection.classList.remove("greyed-out");
-    });
-}
-
-function enableComputerSide() {
-    enableComputerButtons();
-    enableComputerIcons();
-    enableComputerScore();
-}
-
-function disableIcons() {
-    const playButtons = document.querySelectorAll('button');
-
-    playButtons.forEach(button => {
-        button.removeEventListener('click', playRound);
-        button.removeEventListener('mouseover', button.fnAddHover, false);
-        button.removeEventListener('click', button.fnAddClicked, false);
-        button.classList.toggle("greyed-out");
-    });
-
-    const icons = document.querySelectorAll('.main-container i');
-
-    icons.forEach(icon => {
-        icon.classList.toggle("greyed-out");
-    });
-
-    const scoreSections = document.querySelectorAll('.score');
-
-    scoreSections.forEach(scoreSection => {
-        scoreSection.classList.toggle("greyed-out");
-    });
 }
 
 function removePlayAgainOption(gameSessionDetails, playAgainSection) {
