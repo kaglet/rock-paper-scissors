@@ -144,6 +144,9 @@ playButtons.forEach(button => {
 });
 
 // add css style
+// how does it respond to button click vs icon click to prevent styling
 
 
-
+// on click of button it does this stuff without styling icon
+// either only click if target is an icon, so print e both times to see if different
+// add listeners for icons not buttons since that's what I am using now
