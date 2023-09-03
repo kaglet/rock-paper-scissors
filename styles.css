@@ -144,12 +144,12 @@ section .play-again i {
     -webkit-text-stroke-color: transparent;
 }
 
-.player i:hover {
+.player i:hover, .player i.hover {
     position: relative;
     bottom: 10px;
 }
 
-.player i:active {
+.player i.active {
     color: var(--player-color-glow);
     text-shadow: 0px 0px 0.5px var(--player-color-glow);
     -webkit-text-stroke-color: transparent;

@@ -1,4 +1,5 @@
 let playerScore = 0, computerScore = 0;
+const playButtons = document.querySelectorAll('button.play-option.player');
 
 // this will show dialogue box instead
 function printGameResults() {
@@ -75,6 +76,9 @@ function getComputerChoice() {
 // My priority is to keep the main flow of the round to this function, true to its name of course. 
 function playRound(e) {
     // Disallow user selection while round is being played.
+    playButtons.forEach(button => {
+        button.removeEventListener('click', playRound);
+    });
 
     let playerSelection = "";
     switch (true) {
@@ -94,40 +98,52 @@ function playRound(e) {
 
     let computerSelection = getComputerChoice();
 
-    // Telegraph computer choice with same styles as user except automatic, in order
-    // Get computer button
+    // Telegraph computer move
     const chosenComputerButton = document.querySelector(`button.computer.${computerSelection} > i`);;
     // TO DO: Add period where user can't spam click either maybe via disabling although new click is fine, spam is processed (we'll test)
     // TO DO: Add delay for effects before winner is determined
 
     if (!(playerScore === 5 || computerScore === 5)){
         // Add active class
+        // Now both player and computer are active
         chosenComputerButton.classList.add('active');
+        e.target.classList.add('active');
+
         // Add hover class
+        // Ensure both are in hover state
         chosenComputerButton.classList.add('hover');
+        e.target.classList.add('hover');
+        let delayInMs = 700;
+        setTimeout(()=>{
+            determineWinner(playerSelection, computerSelection);
+            updateScores();
+            chosenComputerButton.classList.remove('hover');
+            chosenComputerButton.classList.remove('active');
+            e.target.classList.remove('active');
+            e.target.classList.remove('hover');
+            playButtons.forEach(button => {
+                button.addEventListener('click', playRound);
+            });
 
-        determineWinner(playerSelection, computerSelection);
-        updateScores();
-    
-        chosenComputerButton.classList.remove('hover');
-        chosenComputerButton.classList.remove('active');
-    } else {
-        // showEndGameDialog instead
-        // printGameResults();
+            // Check immediately after score was last updated
+            if (playerScore === 5 || computerScore === 5) {
+                // showEndGameDialog 
 
-        // Reset win counts
-        playerScore = 0;
-        computerScore = 0;
-        updateScores();
-    }
+
+                // Reset win counts for next round
+                playerScore = 0;
+                computerScore = 0;
+                updateScores();
+            }
+        }, delayInMs);
+    } 
 }
-
-const playButtons = document.querySelectorAll('button.play-option.player');
 
 playButtons.forEach(button => {
     button.addEventListener('click', playRound);
 });
 
+// add css style
 
 
 
