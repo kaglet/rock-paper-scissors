@@ -33,7 +33,7 @@ function resetScores() {
     
 }
 
-function showScores() {
+function updateScores() {
     const computerScoreSection = document.querySelector('.score.computer');
     const playerScoreSection = document.querySelector('.score.player');
 
@@ -45,31 +45,20 @@ function determineWinner(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
 
-    if (playerSelection === computerSelection) {
-        return `Draw! Both played ${playerSelection}`;
-    }
-
     playerWins = (playerSelection === "rock" && computerSelection === "scissors")
         || (playerSelection === "scissors" && computerSelection === "paper")
         || (playerSelection === "paper" && computerSelection === "rock");
 
-    // cover player win cases
     if (playerWins) {
         playerScore++;
-        showScores();
-        playerSelection = playerSelection.replace(playerSelection[0], playerSelection[0].toUpperCase());
-        return `You win! ${playerSelection} beats ${computerSelection}.`;
     }
 
     playerLoses = (playerSelection === "paper" && computerSelection === "scissors")
         || (playerSelection === "rock" && computerSelection === "paper")
         || (playerSelection === "scissors" && computerSelection === "rock");
-    // cover player loss cases
+
     if (playerLoses) {
         computerScore++;
-        showScores();
-        computerSelection = computerSelection.replace(computerSelection[0], computerSelection[0].toUpperCase());
-        return `You lose! ${computerSelection} beats ${playerSelection}.`;
     }
 }
 
@@ -113,21 +102,20 @@ function playRound(e) {
     // Telegraph computer choice with same styles as user except automatic, in order
     // Get computer button
     const chosenComputerButton = document.querySelector(`button.computer.${computerSelection}`);;
-    // Add period where user can't spam click either
+    // TO DO: Add period where user can't spam click either maybe via disabling although new click is fine, spam is processed (we'll test)
     // TO DO: Add delay for effects before winner is determined
 
-    // Add  click class
-    chosenComputerButton.classList.add(' click');
-    // Add hover class
-    chosenComputerButton.classList.add('hover');
-
-    determineWinner(playerSelection, computerSelection);
-
-    chosenComputerButton.classList.remove('hover');
-    chosenComputerButton.classList.remove(' click');
-
-    // end game can be explicit instead of a function as it is vague
-    if (playerScore === 5 || computerScore === 5) {
+    if (!(playerScore === 5 || computerScore === 5)){
+        // Add click class
+        chosenComputerButton.classList.add('click');
+        // Add hover class
+        chosenComputerButton.classList.add('hover');        
+        determineWinner(playerSelection, computerSelection);
+        updateScores();
+    
+        chosenComputerButton.classList.remove('hover');
+        chosenComputerButton.classList.remove('click');
+    } else {
         printGameResults();
 
         // Reset win counts
