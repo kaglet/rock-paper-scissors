@@ -18,15 +18,6 @@ function resetScores() {
     
 }
 
-function removePlayAgainOption(gameSessionDetails, playAgainSection) {
-    gameSessionDetails.removeChild(playAgainSection);
-}
-
-function removeGameResultsText() {
-    const roundResultsSection = document.querySelector('section.round-result');
-    roundResultsSection.textContent = "";
-}
-
 function addPlayAgainOption() {
     const playAgainSection = document.createElement('section');
     const retryIcon = document.createElement('i');
