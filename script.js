@@ -150,3 +150,5 @@ playButtons.forEach(button => {
 // on click of button it does this stuff without styling icon
 // either only click if target is an icon, so print e both times to see if different
 // add listeners for icons not buttons since that's what I am using now
+
+// I think leave it to be more general like the computer buttons
