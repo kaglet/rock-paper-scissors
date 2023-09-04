@@ -11,6 +11,10 @@ function toggleModal() {
     // this is to show scores only once when toggleModal is called twice during open and close of modal
     // the above results in this message being shown twice
     if (!(playerScore==0 || computerScore==0)) {
+        // let playerIcons = document.querySelectorAll('player i');
+        // playerIcons.forEach(icon => {
+        //     icon.style.visible = false;
+        // });
         span.textContent = message;
         modal.classList.toggle("show-modal");
     }

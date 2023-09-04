@@ -144,6 +144,15 @@ section .play-again i {
     -webkit-text-stroke-color: transparent;
 }
 
+.player i {
+    transform: scaleX(-1);
+}
+
+/* .show-modal + header + section .player i {
+    transform: scaleX(0);
+    transition: transform 0.25s ease-in;
+} */
+
 /*style icon whether icon or button is clicked and given hover and active class as e.target*/
 .player i:hover,
 .player i.hover,
@@ -196,6 +205,7 @@ h2 {
 }
 
 .modal {
+    z-index: 1;
     position: fixed;
     left: 0;
     top: 0;
