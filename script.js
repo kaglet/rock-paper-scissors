@@ -7,18 +7,13 @@ let closeButton = document.querySelector(".close-button");
 function toggleModal() {
     let message = (playerScore > computerScore) ? "won! " : "lost! "; 
     let span = document.querySelector("h2 > span + span");
-    span.textContent = message;
-    modal.classList.toggle("show-modal");
+    // this is to show scores only once when toggleModal is called twice during open and close of modal
+    // the above results in this message being shown twice
+    if (!(playerScore==0 || computerScore==0)) {
+        span.textContent = message;
+        modal.classList.toggle("show-modal");
+    }
 }
-
-closeButton.addEventListener("click", () => {
-    // Reset win counts for next round
-    playerScore = 0;
-    computerScore = 0;
-    updateScores();
-    toggleModal();
-});
-
 // this will show dialogue box instead
 function printGameResults() {
     const gameResultsSection = document.querySelector('section.game-result');
@@ -154,6 +149,14 @@ function playRound(e) {
 
 playButtons.forEach(button => {
     button.addEventListener('click', playRound);
+});
+
+closeButton.addEventListener("click", () => {
+    // Reset win counts for next round
+    toggleModal();
+    playerScore = 0;
+    computerScore = 0;
+    updateScores();
 });
 
 // add css style
