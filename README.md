@@ -8,4 +8,4 @@ Find the live preview [here](https://kaglet.github.io/rock-paper-scissors/).
 
 ## Credits
 
-* Modal code adapted from: https://www.w3docs.com/snippets/javascript/how-to-create-a-modal-dialog-box-with-css-and-javascript.html
+* Modal code adapted from 2nd last example shown here: https://www.w3docs.com/snippets/javascript/how-to-create-a-modal-dialog-box-with-css-and-javascript.html
