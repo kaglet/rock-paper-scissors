@@ -2,15 +2,22 @@ let playerScore = 0, computerScore = 0;
 const playButtons = document.querySelectorAll('button.play-option.player');
 
 let modal = document.querySelector(".modal");
-let trigger = document.querySelector(".example");
 let closeButton = document.querySelector(".close-button");
 
 function toggleModal() {
-  modal.classList.toggle("show-modal");
+    let message = (playerScore > computerScore) ? "won! " : "lost! "; 
+    let span = document.querySelector("h2 > span + span");
+    span.textContent = message;
+    modal.classList.toggle("show-modal");
 }
 
-trigger.addEventListener("click", toggleModal);
-closeButton.addEventListener("click", toggleModal);
+closeButton.addEventListener("click", () => {
+    // Reset win counts for next round
+    playerScore = 0;
+    computerScore = 0;
+    updateScores();
+    toggleModal();
+});
 
 // this will show dialogue box instead
 function printGameResults() {
@@ -139,12 +146,7 @@ function playRound(e) {
             // Check immediately after score was last updated
             if (playerScore === 5 || computerScore === 5) {
                 // showEndGameDialog 
-                example();
-
-                // Reset win counts for next round
-                playerScore = 0;
-                computerScore = 0;
-                updateScores();
+                toggleModal();
             }
         }, delayInMs);
     } 

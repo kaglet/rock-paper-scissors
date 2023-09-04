@@ -3,7 +3,6 @@
     padding: 0px;
     box-sizing: border-box;
     font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    ;
 }
 
 :root {
@@ -161,8 +160,6 @@ section .play-again i {
 }
 
 /*Set color themes*/
-
-
 body {
     background-color: var(--main-bg-color);
 }
@@ -194,6 +191,10 @@ button {
 }
 
 /* Style modal */
+h2 {
+    font-size: 37px;
+}
+
 .modal {
     position: fixed;
     left: 0;
