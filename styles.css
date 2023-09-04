@@ -243,6 +243,7 @@ div .close-button {
     text-align: center;
     cursor: pointer;
     border-radius: 0.5rem;
+    font-size: 26px;
 }
 
 .close-button:hover {

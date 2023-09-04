@@ -5,7 +5,7 @@ let modal = document.querySelector(".modal");
 let closeButton = document.querySelector(".close-button");
 
 function toggleModal() {
-    let message = (playerScore > computerScore) ? "won! ☺" : "lost! ☹"; 
+    let message = (playerScore > computerScore) ? "won!" : "lost!"; 
     let span = document.querySelector("h2 > span + span");
     span.style.color = (playerScore > computerScore) ? "#D62246" : "#7F95D1";
     // this is to show scores only once when toggleModal is called twice during open and close of modal
