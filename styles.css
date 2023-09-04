@@ -2,7 +2,8 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";;
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    ;
 }
 
 :root {
@@ -31,8 +32,8 @@ section p {
     padding: 0px 100px;
 }
 
-.player.panel + p {
-    background: linear-gradient(to right,var(--player-color), var(--bot-color));
+.player.panel+p {
+    background: linear-gradient(to right, var(--player-color), var(--bot-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -76,18 +77,18 @@ h1 {
     margin: auto;
     text-transform: uppercase;
     color: var(--title-color);
-    width: min-content; 
+    width: min-content;
     line-height: 70px;
-    background: linear-gradient(to right,var(--player-color), var(--bot-color));
+    background: linear-gradient(to right, var(--player-color), var(--bot-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-h1 + p {
-    font-size: 26px;  
+h1+p {
+    font-size: 26px;
     margin: auto;
     font-weight: 600;
-    font-family: "Amiko", serif; 
+    font-family: "Amiko", serif;
     flex: 0;
 }
 
@@ -96,7 +97,7 @@ i {
 }
 
 .score {
-    font-family: "Amiko", serif; 
+    font-family: "Amiko", serif;
 }
 
 footer i {
@@ -109,8 +110,8 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    font-family: var(--main-font); 
-    background: linear-gradient(to right,var(--player-color), var(--bot-color));
+    font-family: var(--main-font);
+    background: linear-gradient(to right, var(--player-color), var(--bot-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -118,7 +119,7 @@ footer {
 section .play-again {
     align-self: center;
     margin-top: 40px;
-    font-family: "Amiko", serif; 
+    font-family: "Amiko", serif;
     font-size: 25px;
 }
 
@@ -145,12 +146,15 @@ section .play-again i {
 }
 
 /*style icon whether icon or button is clicked and given hover and active class as e.target*/
-.player i:hover, .player i.hover, .player.hover i {
+.player i:hover,
+.player i.hover,
+.player.hover i {
     position: relative;
     bottom: 10px;
 }
 
-.player i.active, .player.active i {
+.player i.active,
+.player.active i {
     color: var(--player-color-glow);
     text-shadow: 0px 0px 0.5px var(--player-color-glow);
     -webkit-text-stroke-color: transparent;
@@ -190,7 +194,6 @@ button {
 }
 
 /* Style modal */
-/*Just go back and understand position properties and float*/
 .modal {
     position: fixed;
     left: 0;
@@ -202,8 +205,9 @@ button {
     visibility: hidden;
     transform: scale(1.1);
     transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
-  }
-  .modal-content {
+}
+
+.modal-content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -212,8 +216,9 @@ button {
     padding: 1rem 1.5rem;
     width: 24rem;
     border-radius: 0.5rem;
-  }
-  .close-button {
+}
+
+.close-button {
     float: right;
     width: 1rem;
     line-height: 1.5rem;
@@ -221,17 +226,15 @@ button {
     cursor: pointer;
     border-radius: 30px;
     background-color: #eeeeee;
-  }
-  .close-button:hover {
+}
+
+.close-button:hover {
     background-color: #adadad;
-  }
-  .show-modal {
+}
+
+.show-modal {
     opacity: 1;
     visibility: visible;
     transform: scale(1.0);
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
-  }
-
-.example {
-    color: whitesmoke;
 }
