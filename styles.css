@@ -200,31 +200,42 @@ button {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: #cccccc;
-    opacity: 0;
+    background-color: rgba(44, 44, 44, 0.97);
     visibility: hidden;
+    /* starts big and scales to be small and on fade starts small and scales to be big to pop out */
     transform: scale(1.1);
     transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
 }
 
 .modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #eeeeee;
+    background-color: #1f1f1f;
     padding: 1rem 1.5rem;
+    color: white;
     width: 24rem;
+    height: 10rem;
     border-radius: 0.5rem;
 }
 
+div .close-button {
+    color: black;
+    background-image: linear-gradient(to right, var(--player-color), var(--bot-color));
+}
+
 .close-button {
-    float: right;
-    width: 1rem;
+    padding: 0.8rem 1.1rem;
+    width: 70%;
     line-height: 1.5rem;
     text-align: center;
     cursor: pointer;
-    border-radius: 30px;
+    border-radius: 0.5rem;
     background-color: #eeeeee;
 }
 
@@ -233,8 +244,11 @@ button {
 }
 
 .show-modal {
-    opacity: 1;
     visibility: visible;
     transform: scale(1.0);
-    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+    transition: visibility 0s linear 0s, transform 0.25s, background-color 0.25s 0s;
+}
+
+.example {
+    color: whitesmoke;
 }

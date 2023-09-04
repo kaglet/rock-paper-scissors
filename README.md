@@ -8,13 +8,4 @@ Find the live preview [here](https://kaglet.github.io/rock-paper-scissors/).
 
 ## Credits
 
-### Third Party Code I used
-
-- [Font Awesome](https://fontawesome.com/)
-- [Google Fonts](https://fonts.google.com/)
-
-### Other important resources I used
-
-####  Removing event listeners on anonymous functions
-
-Modal styling adapted from: https://www.w3docs.com/snippets/javascript/how-to-create-a-modal-dialog-box-with-css-and-javascript.html
+* Modal styling adapted from: https://www.w3docs.com/snippets/javascript/how-to-create-a-modal-dialog-box-with-css-and-javascript.html
