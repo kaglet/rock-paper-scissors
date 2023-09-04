@@ -149,11 +149,6 @@ section .play-again i {
     transform: scaleX(-1);
 }
 
-/* .show-modal + header + section .player i {
-    transform: scaleX(0);
-    transition: transform 0.25s ease-in;
-} */
-
 /*style icon whether icon or button is clicked and given hover and active class as e.target*/
 .player i:hover,
 .player i.hover,
