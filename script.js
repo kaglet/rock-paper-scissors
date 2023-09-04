@@ -11,10 +11,6 @@ function toggleModal() {
     // this is to show scores only once when toggleModal is called twice during open and close of modal
     // the above results in this message being shown twice
     if (!(playerScore==0 || computerScore==0)) {
-        // let playerIcons = document.querySelectorAll('player i');
-        // playerIcons.forEach(icon => {
-        //     icon.style.visible = false;
-        // });
         span.textContent = message;
         modal.classList.toggle("show-modal");
     }
@@ -91,7 +87,6 @@ function getComputerChoice() {
     }
 };
 
-// My priority is to keep the main flow of the round to this function, true to its name of course. 
 function playRound(e) {
     // Disallow user selection while round is being played.
     playButtons.forEach(button => {
@@ -118,8 +113,6 @@ function playRound(e) {
 
     // Telegraph computer move
     const chosenComputerButton = document.querySelector(`button.computer.${computerSelection} > i`);;
-    // TO DO: Add period where user can't spam click either maybe via disabling although new click is fine, spam is processed (we'll test)
-    // TO DO: Add delay for effects before winner is determined
 
     if (!(playerScore === 5 || computerScore === 5)){
         // Add active class
@@ -135,6 +128,7 @@ function playRound(e) {
         setTimeout(()=>{
             determineWinner(playerSelection, computerSelection);
             updateScores();
+            // remove player and computer effects at same time when round is over
             chosenComputerButton.classList.remove('hover');
             chosenComputerButton.classList.remove('active');
             e.target.classList.remove('active');
@@ -163,13 +157,3 @@ closeButton.addEventListener("click", () => {
     computerScore = 0;
     updateScores();
 });
-
-// add css style
-// how does it respond to button click vs icon click to prevent styling
-
-
-// on click of button it does this stuff without styling icon
-// either only click if target is an icon, so print e both times to see if different
-// add listeners for icons not buttons since that's what I am using now
-
-// I think leave it to be more general like the computer buttons
