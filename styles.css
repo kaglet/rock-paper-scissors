@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Dhurjati&family=Dosis:wght@400;500&family=Nova+Square&family=Roboto+Mono:wght@500;600&family=Roboto+Slab:wght@400;500;800&family=Silkscreen:wght@400;700&display=swap');
 * {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    
 }
 
 :root {
+    font-family: 'Dosis', system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     --main-bg-color: rgb(9, 9, 9);
     --panel-color: #0f1111;
     --player-color: #D62246;
@@ -47,6 +49,7 @@ section p {
     flex: auto;
     align-items: center;
     padding: 0px 100px;
+    font-family: 'Nova Square';
 }
 
 .moves-container {
@@ -71,14 +74,15 @@ button {
 }
 
 h1 {
-    font-size: 70px;
+    font-size: 90px;
     flex-grow: 1;
     text-align: center;
     margin: auto;
     text-transform: uppercase;
     color: var(--title-color);
     width: min-content;
-    line-height: 70px;
+    line-height: 80px;
+    letter-spacing: 3px;
     background: linear-gradient(to right, var(--player-color), var(--bot-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -111,6 +115,7 @@ footer {
     background: linear-gradient(to right, var(--player-color), var(--bot-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-size: 25px;
 }
 
 section .play-again {
@@ -175,10 +180,12 @@ button {
 
 .player.panel {
     color: var(--player-color);
+    border: 4px solid var(--player-color);
 }
 
 .computer.panel {
     color: var(--bot-color);
+    border: 4px solid var(--bot-color);
 }
 
 .player.play-option {
