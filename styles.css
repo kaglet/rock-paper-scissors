@@ -88,7 +88,6 @@ h1+p {
     font-size: 26px;
     margin: auto;
     font-weight: 600;
-    font-family: "Amiko", serif;
     flex: 0;
 }
 
@@ -97,7 +96,6 @@ i {
 }
 
 .score {
-    font-family: "Amiko", serif;
 }
 
 footer i {
@@ -110,7 +108,6 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    font-family: var(--main-font);
     background: linear-gradient(to right, var(--player-color), var(--bot-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -119,7 +116,6 @@ footer {
 section .play-again {
     align-self: center;
     margin-top: 40px;
-    font-family: "Amiko", serif;
     font-size: 25px;
 }
 
