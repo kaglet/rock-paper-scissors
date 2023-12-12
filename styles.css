@@ -141,7 +141,7 @@ section .play-again i {
     -webkit-text-stroke-color: transparent;
 }
 
-.player i {
+.computer i {
     transform: scaleX(-1);
 }
 
