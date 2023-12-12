@@ -210,7 +210,7 @@ h2 {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(44, 44, 44, 0.97);
+    background-color: rgba(0, 0, 0, 0.95);
     visibility: hidden;
     /* starts big and scales to be small and on fade starts small and scales to be big to pop out */
     transform: scale(1.1);
